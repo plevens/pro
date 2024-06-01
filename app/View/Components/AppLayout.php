@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use App\Models\Game;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
@@ -12,6 +14,13 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.app');
+        $team = Game::get();
+        $n = 0;
+        foreach ($team as $key) {
+            if ($key->auth_id == Auth::user()->id) {
+                $n++;
+            }
+        }
+        return view('layouts.app', compact('n', 'team'));
     }
 }

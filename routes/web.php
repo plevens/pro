@@ -23,4 +23,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::view('/team/create', 'team')
+    ->middleware(['auth', 'verified'])
+    ->name('addTeam');
+
+require __DIR__ . '/auth.php';
