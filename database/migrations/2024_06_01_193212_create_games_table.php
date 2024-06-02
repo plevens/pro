@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('icon');
             $table->string('membre');
-            $table->string('description');
+            $table->string('status');
+            $table->string('description', 2000);
             $table->timestamps();
         });
     }

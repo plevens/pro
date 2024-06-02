@@ -13,6 +13,7 @@ class Game extends Model
         'nom',
         'membre',
         'icon',
+        'status',
         'description',
     ];
 }
