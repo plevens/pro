@@ -23,7 +23,7 @@ class Navigate extends Component
 
 
     public function mount()
-    { // Le chemin vers ton image
+    {
         $this->team = Game::get();
         foreach ($this->team as $key) {
             if ($key->auth_id == Auth::user()->id) {

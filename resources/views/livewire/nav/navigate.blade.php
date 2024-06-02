@@ -15,22 +15,24 @@ new class extends Component
     <x-drop>
         <x-slot name="triggers">
             @if($n >= 1)
-            <ul>
-                @foreach($team as $teams)
-                @if($teams->auth_id == Auth::user()->id)
-                @if($teams->status == "true")
-                <li style="cursor: pointer;">
-                    @if(strlen($teams->icon) > 1)
-                    <img src="{{$teams->icon}}" alt="" width="2cm" height="2cm">
-                    @else
-                    <b style="padding: 10px 20px ; background-color:black;color:aliceblue;border-radius:2cm">{{$teams->icon}}</b>
-                    @endif
-                    {{$teams->nom}} <b style="border-style:solid;color:green;padding:10px 10px">&check;</b>
-                </li>
+
+            @foreach($team as $teams)
+            @if($teams->auth_id == Auth::user()->id)
+            @if($teams->status == "true")
+            <b style="cursor: pointer;display: inline-block;">
+                @if(strlen($teams->icon) > 1)
+                <img src="{{asset('storage/'.$teams->icon)}}" width="20px" height="10px" style="border-radius:4em" alt="Icone" style="">
+                @else
+                <b style="padding: 10px 20px ; background-color:black;color:aliceblue;border-radius:2cm">{{$teams->icon}}</b>
                 @endif
-                @endif
-                @endforeach
-            </ul>
+
+
+                {{$teams->nom}} <b style="border-style:solid;color:green;padding:10px 10px">&check;</b>
+            </b>
+            @endif
+            @endif
+            @endforeach
+
             @else
             <button>
                 Team
@@ -39,13 +41,13 @@ new class extends Component
         </x-slot>
         <x-slot name="contents">
             <x-dropdown-link :href="route('addTeam')" wire:navigate>
-                {{ __('Ajouter') }}
+                {{ __('Add game') }}
             </x-dropdown-link>
             <x-dropdown-link :href="route('addTeam')" wire:navigate>
-                {{ __('Team manageur') }}
+                {{ __('Game setup') }}
             </x-dropdown-link>
             <x-dropdown-link :href="route('addTeam')" wire:navigate>
-                {{ __('Team chat') }}
+                {{ __('Chat Game team') }}
             </x-dropdown-link>
 
             <hr>
@@ -74,7 +76,7 @@ new class extends Component
             </ul>
             @endif
             <x-dropdown-link href="{{route('team')}}" wire:navigate>
-                Afficher plus...
+                voir tout les teams...
             </x-dropdown-link>
         </x-slot>
     </x-drop>

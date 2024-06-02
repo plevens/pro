@@ -34,7 +34,8 @@ class Team extends Component
             $this->validate([
                 'file' => 'image|max:2048|min:0',
             ]);
-            $path = $this->file->store('/public');
+            $this->file->store('public');
+            $path = $this->file->store();
         }
         DB::update('UPDATE `games` SET `status` = "false" WHERE `auth_id` = "' . Auth::user()->id . '"');
         Game::create([
