@@ -19,10 +19,14 @@ new class extends Component
         <form wire:submit="addGame" enctype="multipart/form-data">
             <input wire:model="nom" type="text" placeholder="Nom" name="" id="">
             <br>
-            <label for="tof">Photo:</label> <input wire:model="file" type="file" name="" id="tof">
+            <label for="tof">Photo du groupe</label> <input hidden wire:model="file" type="file" name="" id="tof">
             <br>
+            <b></b>
             @if($file)
-            <img src="{{$file->temporaryUrl() }}" alt="Icone">
+
+            <img src="{{$file->temporaryUrl() }}" alt="Icone" width="100cm">
+            @else
+            <b wire:loading="chargement"></b>
             @endif
             <br>
             <textarea wire:model="description" id="" placeholder="description"></textarea>

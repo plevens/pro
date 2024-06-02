@@ -1,6 +1,8 @@
 <?php
 
 use App\Livewire\Nav\Navigate;
+use App\Livewire\Team\DeleteGame;
+use App\Livewire\Team\NameUpdate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +29,27 @@ Route::view('profile', 'profile')
 Route::view('/team/create', 'team')
     ->middleware(['auth', 'verified'])
     ->name('addTeam');
+
+Route::view('/setup', 'setup')
+    ->middleware(['auth', 'verified'])
+    ->name('setup');
+
+Route::view('/teams', 'team_blog')
+    ->middleware(['auth', 'verified'])
+    ->name('teams');
+
 Route::get('/update/{id}', [Navigate::class, 'change'])
     ->middleware(['auth', 'verified'])
     ->name('change');
+
+Route::get('/update/name/{id}', [NameUpdate::class, 'updateName'])
+    ->middleware(['auth', 'verified'])
+    ->name('update.name');
+
+Route::get('/delete/{id}', [DeleteGame::class, 'supprimer'])
+    ->middleware(['auth', 'verified'])
+    ->name('supprime.game');
+
 Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');

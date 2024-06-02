@@ -13,7 +13,6 @@ class Team extends Component
     use  WithFileUploads;
     public string $nom = '';
     public $file;
-    public string $description = '';
     public $input;
     public function render()
     {
@@ -23,7 +22,6 @@ class Team extends Component
     {
         $this->validate([
             'nom' => ['required', 'max:255', 'string'],
-            'description' => ['required', 'max:255'],
 
         ]);
 
@@ -41,7 +39,7 @@ class Team extends Component
         Game::create([
             'nom' => $this->nom,
             'icon' => $path,
-            'description' => $this->description,
+            'description' => date('d/m/Y à h:i'),
             'membre' => '0',
             'status' => 'true',
             'auth_id' => Auth::user()->id

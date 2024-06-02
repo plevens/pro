@@ -13,18 +13,18 @@ new class extends Component
 <div>
     <center>
         <h1>
-            Les groupes de game
+            Team
         </h1>
     </center>
     <br>
     <center>
         <table class="table" cellspacing="50%" cellpadding="20%">
-            <tr>
+            <tr class="bg-dark">
                 <td>
                     Nom
                 </td>
                 <td>
-                    description
+                    Creation du
                 </td>
                 <td>
                     icon
@@ -55,22 +55,33 @@ new class extends Component
             </tr>
             @else
             <tr>
+
                 <td>
-                    <a href="{{route('change',['id'=>$games->id])}}" wire:navigate> {{$games->nom}} </a>
+                    <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
+                        {{$games->nom}}
+
+                    </a>
                 </td>
                 <td>
-                    {{$games->description}}
+                    <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
+                        {{$games->description}}
+                    </a>
                 </td>
                 <td>
-                    @if(strlen($games->icon) == 1)
-                    {{$games->icon}}
-                    @else
-                    <img src="{{asset('storage/'.$games->icon)}}" width="55cm" style="border-radius:4cm" alt="Icone">
-                    @endif
+                    <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
+                        @if(strlen($games->icon) == 1)
+                        {{$games->icon}}
+                        @else
+                        <img src="{{asset('storage/'.$games->icon)}}" width="55cm" style="border-radius:4cm" alt="Icone">
+                        @endif
+                    </a>
                 </td>
                 <td>
-                    <b style="color:green">&xcirc;</b>
+                    <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
+                        <b style="color:green">&xcirc;</b>
+                    </a>
                 </td>
+
             </tr>
             @endif
             @endforeach
