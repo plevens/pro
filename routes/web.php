@@ -27,6 +27,11 @@ Route::view('profile', 'profile')
 Route::view('/team/create', 'team')
     ->middleware(['auth', 'verified'])
     ->name('addTeam');
-Route::get('/update/{id}', [Navigate::class, 'change'])->middleware(['auth', 'verified'])->name('change');
+Route::get('/update/{id}', [Navigate::class, 'change'])
+    ->middleware(['auth', 'verified'])
+    ->name('change');
+Route::view('/team', 'listeTeam')
+    ->middleware(['auth', 'verified'])
+    ->name('team');
 
 require __DIR__ . '/auth.php';
