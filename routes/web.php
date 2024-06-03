@@ -49,7 +49,11 @@ Route::get('/update/{id}', [Navigate::class, 'change'])
     ->middleware(['auth', 'verified'])
     ->name('change');
 
-Route::get('/update/name/{id}', [NameUpdate::class, 'updateName'])
+Route::get('/updates/{id}', [Navigate::class, 'changed'])
+    ->middleware(['auth', 'verified'])
+    ->name('changed');
+
+Route::put('/update/name/{id}', [NameUpdate::class, 'updateName'])
     ->middleware(['auth', 'verified'])
     ->name('update.name');
 

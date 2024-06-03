@@ -85,6 +85,59 @@ new class extends Component
 
             </tr>
             @endif
+            @foreach($_team as $_tesams)
+            @if($_tesams->activate == "true" && $_tesams->user_id == Auth::user()->id && $_tesams->team_id == $games->id)
+            <tr>
+                <td>
+                    {{$games->nom}}
+                </td>
+                <td>
+                    {{$games->description}}
+                </td>
+                <td>
+                    @if(strlen($games->icon) == 1)
+                    {{$games->icon}}
+                    @else
+                    <img src="{{asset('storage/'.$games->icon)}}" width="55cm" style="border-radius:4cm" alt="Icone">
+                    @endif
+                </td>
+                <td>
+                    <b style="color:green">&check;</b>
+                </td>
+            </tr>
+            @endif
+            @if($_tesams->activate == "false" && $_tesams->user_id == Auth::user()->id && $_tesams->team_id == $games->id && $_tesams->accepted = "true")
+            <tr>
+                <td>
+                    <a href="{{route('changed',['id'=>$_tesams->id])}}" wire:navigate>
+                        {{$games->nom}}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{route('changed',['id'=>$_tesams->id])}}" wire:navigate>
+
+                        {{$games->description}}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{route('changed',['id'=>$_tesams->id])}}" wire:navigate>
+
+                        @if(strlen($games->icon) == 1)
+                        {{$games->icon}}
+                        @else
+                        <img src="{{asset('storage/'.$games->icon)}}" width="55cm" style="border-radius:4cm" alt="Icone">
+                        @endif
+                    </a>
+                </td>
+                <td>
+                    <a href="{{route('changed',['id'=>$_tesams->id])}}" wire:navigate>
+
+                        <b style="color:green">&xcirc;</b>
+                    </a>
+                </td>
+            </tr>
+            @endif
+            @endforeach
             @endforeach
 
         </table>

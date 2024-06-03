@@ -118,7 +118,7 @@ new class extends Component
                 $e++;
                 @endphp
                 @if($e < 3) <li>
-                    <x-dropdown-link href="{{route('change',['id'=>$teams->id])}}" wire:navigate>{{$teams->nom}}</x-dropdown-link>
+                    <x-dropdown-link href="{{route('changed',['id'=>$_teams->id])}}" wire:navigate>{{$teams->nom}}</x-dropdown-link>
                     </li>
                     @endif
                     @endif

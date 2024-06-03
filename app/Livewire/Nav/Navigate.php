@@ -51,8 +51,17 @@ class Navigate extends Component
     {
 
         DB::update('UPDATE `games` SET `status` ="false" WHERE `auth_id` = "' . Auth::user()->id . '" ');
-        DB::update('UPDATE `gamestatuts` SET `activate` ="false" WHERE `user_id` = "' . Auth::user()->id . '" ');
+        DB::update('UPDATE `gamestatuts` SET `activate` ="false" WHERE `user_id` = "' . Auth::user()->id . '" OR `auth_id` ="' . Auth::user()->id . '"');
         DB::update('UPDATE `games` SET `status` ="true" WHERE `auth_id` = "' . Auth::user()->id . '" AND `id` = "' . $id->id . '"');
+
+        return back();
+    }
+
+    public function changed(Gamestatut $id)
+    {
+        DB::update('UPDATE `games` SET `status` ="false" WHERE `auth_id` = "' . Auth::user()->id . '" ');
+        DB::update('UPDATE `gamestatuts` SET `activate` ="false" WHERE `user_id` = "' . Auth::user()->id . '" ');
+        DB::update('UPDATE `gamestatuts` SET `activate` ="true" WHERE `user_id` = "' . Auth::user()->id . '" AND `id` ="' . $id->id . '"');
         return back();
     }
 }
