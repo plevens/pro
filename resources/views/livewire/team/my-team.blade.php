@@ -15,7 +15,7 @@ new class extends Component
     @if($teams->auth_id == Auth::user()->id)
     <h3>Team creer le {{$teams->description}}</h3>
     <br>
-    <h2>Membre {{$teams->member}}</h2>
+    <h2>Membre {{$teams->membre}}</h2>
     @endif
     @endforeach
 </div>

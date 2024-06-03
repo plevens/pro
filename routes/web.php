@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Nav\Navigate;
+use App\Livewire\Notification\Notification;
 use App\Livewire\Team\DeleteGame;
 use App\Livewire\Team\NameUpdate;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,10 @@ Route::view('/teams', 'team_blog')
     ->middleware(['auth', 'verified'])
     ->name('teams');
 
+Route::view('/notification', 'notification')
+    ->middleware(['auth', 'verified'])
+    ->name('notification');
+
 Route::get('/update/{id}', [Navigate::class, 'change'])
     ->middleware(['auth', 'verified'])
     ->name('change');
@@ -53,5 +58,10 @@ Route::get('/delete/{id}', [DeleteGame::class, 'supprimer'])
 Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');
+
+//notification root 
+Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
+    ->middleware(['auth', 'verified'])
+    ->name('accepte.team');
 
 require __DIR__ . '/auth.php';

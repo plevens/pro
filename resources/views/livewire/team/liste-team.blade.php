@@ -34,7 +34,7 @@ new class extends Component
                 </td>
             </tr>
             @foreach($game as $games)
-            @if($games->status == "true")
+            @if($games->status == "true" && $games->auth_id == Auth::user()->id)
             <tr>
                 <td>
                     {{$games->nom}}
@@ -53,7 +53,8 @@ new class extends Component
                     <b style="color:green">&check;</b>
                 </td>
             </tr>
-            @else
+            @endif
+            @if($games->status == "false" && $games->auth_id == Auth::user()->id)
             <tr>
 
                 <td>
