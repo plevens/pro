@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('hobbies', function (Blueprint $table) {
             $table->id();
+            $table->string('game_id');
+            $table->string('auth_id');
+            $table->string('nom');
+            $table->string('icon');
+            $table->string('description');
+            $table->string('banniere');
             $table->timestamps();
         });
     }

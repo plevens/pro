@@ -9,9 +9,11 @@ class Hobby extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'game_id',
+        'auth_id',
         'nom',
         'icon',
         'description',
-        'banniere'
+        'banniere',
     ];
 }

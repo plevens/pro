@@ -4,42 +4,35 @@ use Livewire\Volt\Component;
 
 new class extends Component
 {
-   public Macth $macth;
+    public Macth $game;
 }
-
 ?>
+ <center>
+     @if(session('status') == '200')
+        <h1>
+            Jeu ajouter
+        </h1>
+     @endif
+     @if(session('status') == '401')
+        <h1>
+            Vous avez deja ajouter un jeu
+        </h1>
+     @endif
 
-<div>
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Creer mon jeu') }}
-        </h2>
-    </x-slot>
-    @livewire('team.dash')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <center>
-                        <form wire:submit="startGame" enctype="multipart/form-data">
-                            <input wire:model="nom" type="text" name="" id="" placeholder="Nom de votre jeu">
-                                <br><br>
-                            <label for="icon">Votre icon</label>
-                            <br>
-                            <input wire:model="file" type="file" hidden name="" id="icon">
-                            <br>
-                            description de votre jeu <br>
-                            <textarea wire:model="description" name="" id="" cols="20" rows="3"></textarea>
-                            <br>
-                            <button wire:navigate>
-                                Lancer le jeu
-                            </button>
-                        </form>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
-</div>
+    <form wire:submit="startGame"  enctype="multipart/form-data">
+        <input wire:model="nom" type="text" name="" id="" placeholder="Nom de votre jeu">
+        <x-input-error :messages="$errors->get('nom')" class="mt-2" />
+        <br><br>
+        <label for="icon">Votre icon</label>
+        <br>
+        <input wire:model="file" type="file" hidden name="file" id="icon">
+        <br>
+        Description de votre jeu <br>
+        <textarea wire:model="description" name="" id="" cols="20" rows="3"></textarea>
+        <x-input-error :messages="$errors->get('description')" class="mt-2" />
+        <br>
+        <button>
+            Ajouter votre jeu
+        </button>        
+    </form>
+</center>
