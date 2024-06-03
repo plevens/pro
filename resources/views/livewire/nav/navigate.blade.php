@@ -42,18 +42,22 @@ new class extends Component
 
             <!-- invitation team  -->
             @foreach($team_invitate as $_teams)
-            @foreach($team as $teams)
-            @if($teams->id == $_teams->team_id && $_teams->activate == 'true' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
-            <b style="cursor: pointer;background-color:skyblue;border-radius:20px">
-                <b style="border-style:solid;color:green;padding:10px 10px;top:-1cm">&check;</b><b>{{$teams->nom}}</b>
+            @foreach($team as $__teams)
 
-                @if(strlen($teams->icon) > 1)
+            @if($__teams->id == $_teams->team_id && $_teams->activate == 'true' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
+            @php
+            $i++;
+            @endphp
+            <b style="cursor: pointer;background-color:skyblue;border-radius:20px">
+                <b style="border-style:solid;color:green;padding:10px 10px;top:-1cm">&check;</b><b>{{$__teams->nom}}</b>
+
+                @if(strlen($__teams->icon) > 1)
                 &nbsp;
-                <input type="image" src="{{asset('storage/'.$teams->icon)}}" width="25px" height="25cm" style="border-radius:4em" alt="Icone" />
+                <input type="image" src="{{asset('storage/'.$__teams->icon)}}" width="25px" height="25cm" style="border-radius:4em" alt="Icone" />
                 @else
                 &nbsp;
 
-                <b style="padding: 2px 5px ; background-color:black;color:aliceblue;border-radius:4em">{{$teams->icon}}</b>
+                <b style="padding: 2px 5px ; background-color:black;color:aliceblue;border-radius:4em">{{$__teams->icon}}</b>
                 @endif
             </b>
             @endif

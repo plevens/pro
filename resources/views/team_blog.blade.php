@@ -4,15 +4,7 @@
             {{ __('Mon team') }}
         </h2>
     </x-slot>
-    <div style="position:fixed;background-color:black;color:white;height:100%">
-        <button>Membre(s)</button>
-        <br>
-        <button>Jeux</button>
-        <br>
-        <button>Pseudo</button>
-        <br>
-        <button>Messages</button>
-    </div>
+    @livewire('team.dash')
     <center>
         <div class="py-12" style="margin-left:1.5cm">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

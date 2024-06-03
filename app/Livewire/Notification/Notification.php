@@ -24,7 +24,7 @@ class Notification extends Component
     public function accepteInvitation(Gamestatut $id)
     {
         $id->update([
-            'accepted' => 'ok',
+            'accepted' => 'true',
             'activate' => 'true',
         ]);
         $team = Game::get();
@@ -32,13 +32,13 @@ class Notification extends Component
         $nbr = 0;
 
         foreach ($team as $key) {
-            if ($key->id == $id->id) {
+            if ($key->id == $id->team_id) {
                 $ids = $key->id;
                 $nbr = $key->membre;
             }
         }
         DB::update('UPDATE `games` SET `membre` ="' . ($nbr + 1) . '" WHERE `id` ="' . $ids . '"');
-        DB::update('UPDATE `games` SET `status` ="false" WHERE `auth_id` = "' .  Auth::user()->id . '" AND `id` = "' . $ids . '"');
+        DB::update('UPDATE `games` SET `status` ="false" WHERE `auth_id` = "' .  Auth::user()->id . '"');
         return back();
     }
 }
