@@ -6,9 +6,11 @@ use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class NameUpdate extends Component
 {
+    use WithFileUploads;
     public Game $nom;
     public Game $id;
     public $name;
@@ -20,10 +22,17 @@ class NameUpdate extends Component
     public function updateName(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:20|min:5',
+            'name' => 'required|string|max:20|min:3',
             'id' => 'required'
         ]);
-        DB::update('UPDATE `games` SET `nom` ="' . $request->name . '" WHERE `id` = "' . $request->id . '"');
+        if (empty($request->file('file'))) {
+            $path = $request->image;
+        } else {
+            $image = $request->file('file');
+            $image->store('public');
+            $path = $image->store();
+        }
+        DB::update('UPDATE `games` SET `nom` ="' . $request->name . '", `icon`= "' . $path . '"  WHERE `id` = "' . $request->id . '"');
         return back();
     }
 }

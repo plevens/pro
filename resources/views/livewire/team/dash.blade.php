@@ -15,7 +15,7 @@ new class extends Component
     @if($gamers->auth_id == Auth::user()->id)
     <div>
         <div style="position:fixed;background-color:black;color:white;height:100%">
-            <a href="{{$gamers->id}}" wire:navigate>Membre</a>
+            <a href="{{route('member.team')}}" wire:navigate>Membres</a>
             <br>
             <a href="{{route('gameTeam')}}" wire:navigate>Jeux</a>
             <br>
