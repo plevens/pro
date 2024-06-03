@@ -10,6 +10,7 @@ use Livewire\Component;
 class Dash extends Component
 {
 
+
     public function render()
     {
         $game = Game::get()->where('status', 'true');

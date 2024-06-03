@@ -20,7 +20,7 @@ class NameUpdate extends Component
     public function updateName(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:20|min:5',
+            'name' => 'required|string|max:20|min:3',
             'id' => 'required'
         ]);
         DB::update('UPDATE `games` SET `nom` ="' . $request->name . '" WHERE `id` = "' . $request->id . '"');
