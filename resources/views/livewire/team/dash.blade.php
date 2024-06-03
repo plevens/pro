@@ -17,7 +17,7 @@ new class extends Component
         <div style="position:fixed;background-color:black;color:white;height:100%">
             <a href="{{route('member.team')}}" wire:navigate>Membres</a>
             <br>
-            <button>Jeux</button>
+            <a href="{{route('gameTeam')}}" wire:navigate>Jeux</a>
             <br>
             <button>Pseudo</button>
             <br>

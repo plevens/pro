@@ -3,6 +3,7 @@
 use App\Livewire\Nav\Navigate;
 use App\Livewire\Notification\Notification;
 use App\Livewire\Team\DeleteGame;
+use App\Livewire\Match\Macth;
 use App\Livewire\Team\NameUpdate;
 use App\Livewire\TeamAction\Membre;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,10 @@ Route::get('/delete/{id}', [DeleteGame::class, 'supprimer'])
 Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');
+
+Route::get('/team/game', [Macth::class, 'render'])
+    ->middleware(['auth', 'verified'])
+    ->name('gameTeam');
 
 //notification root 
 Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
