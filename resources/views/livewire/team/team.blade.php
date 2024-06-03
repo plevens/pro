@@ -23,15 +23,12 @@ new class extends Component
             <br>
             <b></b>
             @if($file)
-
             <img src="{{$file->temporaryUrl() }}" alt="Icone" width="100cm">
             @else
             <b wire:loading="chargement"></b>
             @endif
             <br>
-            <textarea wire:model="description" id="" placeholder="description"></textarea>
-            <br>
-            <input type="submit" value="Enregistrer">
+            <input type="submit" value="Enregistrer" >
         </form>
     </center>
 </div>
