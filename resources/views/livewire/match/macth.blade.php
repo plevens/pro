@@ -10,8 +10,15 @@ new class extends Component
 ?>
 <div>
     <center>
+    @if(session('status') == '200')
+        <b>Votre jeu est ajouté</b>
+    @endif
+    @if(session('status') == '401')
+        <b>Vous avez déja ajouté un jeu</b>
+    @endif
     <form wire:submit="startGame" enctype="multipart/form-data">
         <input wire:model="nom" type="text" name="" id="" placeholder="Nom de votre jeu">
+        <x-input-error :messages="$errors->get('nom')" class="mt-2" />
         <br>
         <label for="icon">
             icon de votre jeu
@@ -19,6 +26,7 @@ new class extends Component
         <input wire:model="file" type="file" name="" id="icon" hidden>
         <br>
         <textarea wire:model="description" name="" id="" cols="20" rows="3"></textarea>
+        <x-input-error :messages="$errors->get('description')" class="mt-2" />
         <br><br>
         <button>
             Ajouter votre jeu

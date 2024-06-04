@@ -23,8 +23,11 @@ class Macth extends Component
 
     public function render()
     {
+        
         return view('livewire.match.macth');
     }
+
+    
 
     public function startGame()
     {
@@ -53,6 +56,8 @@ class Macth extends Component
                $this->id = $key->id;       
            }
         }
+
+        
 
         foreach ($this->hobbies as $keys) {
             foreach ($this->jeu as $key) {
