@@ -86,6 +86,11 @@ Route::view('/team/game', 'jeux')
     ->middleware(['auth', 'verified'])
     ->name('gameTeam');
 
+Route::view('/seen/game', 'seengame')
+    ->middleware(['auth', 'verified'])
+    ->name('seengame');
+    
+
 //notification root 
 Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
     ->middleware(['auth', 'verified'])

@@ -19,13 +19,18 @@ new class extends Component
     <form wire:submit="startGame" enctype="multipart/form-data">
         <input wire:model="nom" type="text" name="" id="" placeholder="Nom de votre jeu">
         <x-input-error :messages="$errors->get('nom')" class="mt-2" />
-        <br>
+        <br><br>
         <label for="icon">
             icon de votre jeu
         </label>
         <input wire:model="file" type="file" name="" id="icon" hidden>
-        <br>
-        <textarea wire:model="description" name="" id="" cols="20" rows="3"></textarea>
+            @if($file)
+            <img src="{{$file->temporaryUrl() }}" alt="Icone" width="50cm">
+            @else
+            <b wire:loading="chargement"></b>
+            @endif
+        <br><br>
+        <textarea wire:model="description" placeholder="Description du jeu" name="" id="" cols="20" rows="3"></textarea>
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
         <br><br>
         <button>
