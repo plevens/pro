@@ -48,7 +48,7 @@ new class extends Component
             <br>
             <button>Messages</button>
             <br>
-            <a href="">
+            <a href="{{route('exit.team',['id'=>$_teams->id])}}" wire:navigate>
                 <x-danger-button>
                     Quitter le groupe
                 </x-danger-button>

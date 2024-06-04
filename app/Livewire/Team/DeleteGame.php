@@ -49,4 +49,20 @@ class DeleteGame extends Component
         session()->flash('msg', $ids);
         return redirect('/team');
     }
+    public function suppressions(Gamestatut $id)
+    {
+        $id->delete();
+        $team = Game::get();
+        $nbr = 0;
+        $ids = 0;
+        foreach ($team as $key) {
+            if ($key->id == $id->team_id) {
+                $nbr = $key->membre;
+                $ids = $key->id;
+            }
+        }
+        DB::update('UPDATE `games` SET `membre` ="' . ($nbr - 1) . '" WHERE `id` = "' . $id->team_id . '"');
+        session()->flash('msg', $ids);
+        return back();
+    }
 }

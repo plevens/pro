@@ -4,6 +4,7 @@ namespace App\Livewire\Team;
 
 use App\Models\Game;
 use App\Models\Gamestatut;
+use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -51,6 +52,22 @@ class NameUpdate extends Component
             $path = $image->store();
         }
         DB::update('UPDATE `gamestatuts` SET `pseudo` ="' . $request->pseudo . '" , `avatar` ="' . $path . '" WHERE `id`="' . $request->id . '"');
+        return back();
+    }
+    public function bloquer(Gamestatut $id)
+    {
+        $id->update([
+            'activate' => 'bloque',
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+        return back();
+    }
+    public function debloquer(Gamestatut $id)
+    {
+        $id->update([
+            'activate' => 'true',
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
         return back();
     }
 }
