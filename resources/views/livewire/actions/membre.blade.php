@@ -14,12 +14,14 @@ new class extends Component
         @foreach($team as $key)
         @if($key->auth_id == Auth::user()->id)
         Membre du groupe ({{$key->membre}})
-        @endif
-        @endforeach
-        <table cellpadding="10%">
+
+        <table cellpadding="10%" style="text-align:center">
             <tr>
                 <td>
-                    Nom
+
+                </td>
+                <td>
+                    Pseudo
                 </td>
                 <td>
                     Role
@@ -27,7 +29,14 @@ new class extends Component
                 <td>
                     date d'entrer
                 </td>
+                <td>
+                    Menu
+                </td>
             </tr>
+            @endif
+            @endforeach
+            @foreach($team as $key)
+            @if($key->auth_id == Auth::user()->id)
             @foreach($user as $users)
             @foreach($membres as $_membre)
             @if($_membre->auth_id == Auth::user()->id && !empty($_membre->user_id))
@@ -37,9 +46,13 @@ new class extends Component
             @endphp
             @if($users->id == $_membre->user_id)
             <tr>
+                <td style="background-color:cadetblue;border-radius:2em;padding:20px 20px ;font-weight:bold;">
+                    {{$_membre->avatar}}
+
+                </td>
                 <td>
 
-                    {{$users->name}}
+                    {{$_membre->pseudo}}
 
 
                 </td>
@@ -49,11 +62,26 @@ new class extends Component
                 <td>
                     {{$format}}
                 </td>
+                <td>
+                    <a href="">
+                        <x-danger-button>
+                            Supprimer
+                        </x-danger-button>
+                    </a>
+                    <a href="">
+                        <x-primary-button>
+                            Modifier
+                        </x-primary-button>
+                    </a>
+
+                </td>
 
             </tr>
             @endif
             @endif
             @endforeach
+            @endforeach
+            @endif
             @endforeach
         </table>
     </center>
