@@ -109,11 +109,17 @@ Route::get('/bloquer/{id}', [NameUpdate::class, 'bloquer'])
 Route::get('/debloquer/{id}', [NameUpdate::class, 'debloquer'])
     ->middleware(['auth', 'verified'])
     ->name('debloc.member');
-// supprimer definitif un membre 
 
+// supprimer definitif un membre 
 
 Route::get('/delete/member/{id}', [DeleteGame::class, 'suppressions'])
     ->middleware(['auth', 'verified'])
     ->name('delete.member');
+
+// ajouter un membre supplementaire 
+
+Route::view('/ajouter/membre', 'membre_sup')
+    ->middleware(['auth', 'verified'])
+    ->name('membre.sup');
 
 require __DIR__ . '/auth.php';

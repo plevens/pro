@@ -10,7 +10,7 @@ new class extends Component
 
 ?>
 
-<div>
+<div wire:poll.5s>
     @php
     $p = 0;
     @endphp
@@ -21,5 +21,10 @@ new class extends Component
     @endphp
     @endif
     @endforeach
+
+    @if($p == 0)
+
+    @else
     {{$p}}
+    @endif
 </div>

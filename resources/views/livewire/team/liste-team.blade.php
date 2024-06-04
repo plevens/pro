@@ -10,7 +10,7 @@ new class extends Component
 
 ?>
 
-<div>
+<div wire:poll.5s>
     <center>
         <h1>
             Team
@@ -113,7 +113,7 @@ new class extends Component
             </tr>
             @endif
             @foreach($_team as $_tesams)
-            @if($_tesams->activate == "true" && $_tesams->user_id == Auth::user()->id && $_tesams->team_id == $games->id)
+            @if($_tesams->activate == "true" && $_tesams->user_id == Auth::user()->id && $_tesams->team_id == $games->id && $_tesams->accepted == "true")
             <tr>
                 <td>
                     {{$games->nom}}
@@ -140,7 +140,7 @@ new class extends Component
                 </td>
             </tr>
             @endif
-            @if($_tesams->activate == "false" && $_tesams->user_id == Auth::user()->id && $_tesams->team_id == $games->id && $_tesams->accepted = "true")
+            @if($_tesams->activate == "false" && $_tesams->user_id == Auth::user()->id && $_tesams->team_id == $games->id && $_tesams->accepted == "true" )
             <tr>
                 <td>
                     <a href="{{route('changed',['id'=>$_tesams->id])}}" wire:navigate>

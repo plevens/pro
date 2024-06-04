@@ -10,19 +10,17 @@ use Livewire\Component;
 
 class Notification extends Component
 {
-    public $team;
-    public $_team;
-    public function mount()
-    {
-        $this->team = Gamestatut::get()->where('accepted', 'waiting');
-        $this->_team = Game::get();
-    }
+
     public function render()
     {
-        return view('livewire.notification.notification');
+        $team = Gamestatut::get()->where('accepted', 'waiting');
+        $_team = Game::get();
+        return view('livewire.notification.notification', compact('team', '_team'));
     }
     public function accepteInvitation(Gamestatut $id)
     {
+        DB::update('UPDATE `gamestatuts` SET `activate` ="false" WHERE `user_id` ="' . Auth::user()->id . '"');
+
         $id->update([
             'accepted' => 'true',
             'activate' => 'true',

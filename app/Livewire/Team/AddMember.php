@@ -10,6 +10,12 @@ use Livewire\Component;
 
 class AddMember extends Component
 {
+    public function redirectToSamePage()
+    {
+        // Votre logique métier ici
+
+        $this->dispatchBrowserEvent('redirect', ['url' => url()->current()]);
+    }
     public function render()
     {
         $game = Game::get()->where('status', 'true');
@@ -51,7 +57,6 @@ class AddMember extends Component
                 'team_id' => $this->team_id
             ]);
             session()->flash('msg', '201');
-            $this->redirect('/setup', navigate: true);
         }
         if ($this->n == 0) {
             Gamestatut::create([
@@ -65,8 +70,6 @@ class AddMember extends Component
                 'team_id' => $this->team_id
             ]);
             session()->flash('msg', '200');
-
-            $this->redirect('/setup', navigate: true);
         }
     }
 }

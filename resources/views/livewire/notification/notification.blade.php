@@ -11,7 +11,7 @@ new class extends Component
 ?>
 
 
-<div>
+<div wire:poll.5s>
 
     @foreach($team as $teams)
     @foreach($_team as $_teams)

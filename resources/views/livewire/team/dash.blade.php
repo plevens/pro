@@ -9,7 +9,7 @@ new class extends Component
 }
 
 ?>
-<div>
+<div wire:poll.5s>
     @if($n >= 1)
     @foreach($game as $gamers)
     @if($gamers->auth_id == Auth::user()->id)
@@ -18,8 +18,6 @@ new class extends Component
             <a href="{{route('member.team')}}" wire:navigate>Membres</a>
             <br>
             <a href="{{route('gameTeam')}}" wire:navigate>Jeux</a>
-            <br>
-            <button>Pseudo</button>
             <br>
             <button>Messages</button>
             <br>

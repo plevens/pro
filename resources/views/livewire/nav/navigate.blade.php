@@ -11,7 +11,7 @@ new class extends Component
 
 ?>
 
-<div>
+<div wire:poll.5s>
     <x-drop>
         <x-slot name="triggers">
             @if($n >= 1)
@@ -68,9 +68,9 @@ new class extends Component
             <b style="cursor: pointer;display: inline-block;">Team</b>
             @endif
             @else
-            <button>
+            <b style="cursor: pointer;display: inline-block;">
                 Team
-            </button>
+            </b>
             @endif
         </x-slot>
         <x-slot name="contents">

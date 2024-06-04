@@ -9,7 +9,7 @@ new class extends Component
 }
 
 ?>
-<div>
+<div wire:poll.5s>
     <center>
         @if(session('msg'))
         <b class="bg-warning text-white easy-in-out">! Vous avez supprimer un utilisateur du groupe</b>
@@ -18,6 +18,8 @@ new class extends Component
         @foreach($team as $key)
         @if($key->auth_id == Auth::user()->id)
         Membre du groupe ({{$key->membre}})
+        <br>
+        <a href="{{route('membre.sup')}}">Ajouter un membre</a>
 
         <table cellpadding="10%" class="table w-6 border-2" style="text-align:center">
             <tr class="bg-dark text-white">
@@ -59,7 +61,7 @@ new class extends Component
                     @if(strlen($_membre->avatar) == 1)
                     <b style="background-color:cadetblue;border-radius:2em;padding:20px 20px ;font-weight:bold;">{{$_membre->avatar}}</b>
                     @else
-                    <input type="image" src="{{asset('storage/'.$_membre->avatar)}}" style="border-radius:4em" alt="" width="50cm" height="50cm">
+                    <input type=" image" src="{{asset('storage/'.$_membre->avatar)}}" style="border-radius:4em" alt="" width="50cm" height="50cm">
                     @endif
                 </td>
                 <td>

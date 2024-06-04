@@ -37,5 +37,4 @@ new class extends Component
         @endforeach
     </center>
 
-
 </div>
