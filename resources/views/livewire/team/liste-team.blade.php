@@ -18,13 +18,22 @@ new class extends Component
     </center>
     <br>
     <center>
+        <!-- Message d'avoir quitter le groupe  -->
+        @if(session('msg'))
+        @foreach($game as $games)
+        @if($games->id == session('msg'))
+        Vous avez quitter le groupe {{$games->nom}}
+        @endif
+        @endforeach
+        @endif
+        <!-- tableau pour afficher les teams(groupes) disponible  -->
         <table class="table" cellspacing="50%" cellpadding="20%">
             <tr class="bg-dark">
                 <td>
                     Nom
                 </td>
                 <td>
-                    Creation du
+                    Creer le
                 </td>
                 <td>
                     icon
@@ -32,9 +41,13 @@ new class extends Component
                 <td>
                     status
                 </td>
+                <td>
+
+                </td>
             </tr>
             @foreach($game as $games)
             @if($games->status == "true" && $games->auth_id == Auth::user()->id)
+
             <tr>
                 <td>
                     {{$games->nom}}
@@ -51,6 +64,13 @@ new class extends Component
                 </td>
                 <td>
                     <b style="color:green">&check;</b>
+                </td>
+                <td>
+                    <a href="{{route('supprime.game',['id'=>$games->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
+                        <x-danger-button>
+                            Supprimer
+                        </x-danger-button>
+                    </a>
                 </td>
             </tr>
             @endif
@@ -82,6 +102,13 @@ new class extends Component
                         <b style="color:green">&xcirc;</b>
                     </a>
                 </td>
+                <td>
+                    <a href="{{route('supprime.game',['id'=>$games->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
+                        <x-danger-button>
+                            Supprimer
+                        </x-danger-button>
+                    </a>
+                </td>
 
             </tr>
             @endif
@@ -103,6 +130,13 @@ new class extends Component
                 </td>
                 <td>
                     <b style="color:green">&check;</b>
+                </td>
+                <td>
+                    <a href="{{route('exit.team',['id'=>$_tesams->id])}}" onclick="if(confirm('Voulez-vous vraiment quitter le groupe ?')){}else return false;" wire:navigate>
+                        <x-danger-button>
+                            Quitter cet groupe
+                        </x-danger-button>
+                    </a>
                 </td>
             </tr>
             @endif
@@ -133,6 +167,13 @@ new class extends Component
                     <a href="{{route('changed',['id'=>$_tesams->id])}}" wire:navigate>
 
                         <b style="color:green">&xcirc;</b>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{route('exit.team',['id'=>$_tesams->id])}}" onclick="if(confirm('Voulez-vous vraiment quitter le groupe ?')){}else return false;" wire:navigate>
+                        <x-danger-button>
+                            Quitter cet groupe
+                        </x-danger-button>
                     </a>
                 </td>
             </tr>

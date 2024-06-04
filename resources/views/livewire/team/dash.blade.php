@@ -22,6 +22,12 @@ new class extends Component
             <button>Pseudo</button>
             <br>
             <button>Messages</button>
+            <br>
+            <a href="{{route('supprime.game',['id'=>$gamers->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
+                <x-danger-button>
+                    Supprimer
+                </x-danger-button>
+            </a>
         </div>
     </div>
     @endif
@@ -41,6 +47,12 @@ new class extends Component
             <button>Pseudo</button>
             <br>
             <button>Messages</button>
+            <br>
+            <a href="">
+                <x-danger-button>
+                    Quitter le groupe
+                </x-danger-button>
+            </a>
         </div>
     </div>
     @endif
