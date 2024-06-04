@@ -90,15 +90,12 @@ Route::view('/seen/game', 'seengame')
     ->middleware(['auth', 'verified'])
     ->name('seengame');
 
-<<<<<<< HEAD
 // Message root 
 
 Route::view('/team/message','sms')
     ->middleware(['auth','verified'])
     ->name('smsTeam');
     
-=======
->>>>>>> 243cbb05da81075a345138317e99f041ef5d7b00
 
 //notification root 
 Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
