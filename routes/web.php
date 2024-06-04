@@ -65,7 +65,7 @@ Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');
 
-Route::get('/team/game', [Macth::class, 'render'])
+Route::view('/team/game', 'jeux')
     ->middleware(['auth', 'verified'])
     ->name('gameTeam');
 
