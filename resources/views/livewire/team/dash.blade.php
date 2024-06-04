@@ -19,7 +19,13 @@ new class extends Component
             <br>
             <a href="{{route('gameTeam')}}" wire:navigate>Jeux</a>
             <br>
+<<<<<<< HEAD
             <button>Messages</button>
+=======
+            <button>Pseudo</button>
+            <br>
+            <a href="{{route('smsTeam')}}" wire:navigate>Messages</a>
+>>>>>>> 6c73e1b9e2f5418617ae2cd05771aeee8a650a3f
             <br>
             <a href="{{route('supprime.game',['id'=>$gamers->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
                 <x-danger-button>
@@ -44,7 +50,7 @@ new class extends Component
             <br>
             <button>Pseudo</button>
             <br>
-            <button>Messages</button>
+            <a href="{{route('smsTeam')}}" wire:navigate>Messages</a>
             <br>
             <a href="{{route('exit.team',['id'=>$_teams->id])}}" wire:navigate>
                 <x-danger-button>
