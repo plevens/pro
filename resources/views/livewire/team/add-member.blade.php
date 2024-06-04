@@ -13,6 +13,8 @@ new class extends Component
 
 <div>
     <center>
+        @foreach($game as $games)
+        @if($games->auth_id == Auth::user()->id)
         <h2>
             Ajouter un membre
         </h2>
@@ -31,6 +33,8 @@ new class extends Component
                 Ajouter
             </x-primary-button>
         </form>
+        @endif
+        @endforeach
     </center>
 
 

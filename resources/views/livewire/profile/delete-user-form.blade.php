@@ -18,7 +18,7 @@ new class extends Component
             'password' => ['required', 'string', 'current_password'],
         ]);
         DB::delete('DELETE FROM `games` WHERE `auth_id` = "' . Auth::user()->id . '"');
-        DB::delete('DELETE FROM `gamestatuts` WHERE `auth_id` = "' . Auth::user()->id . '"');
+        DB::delete('DELETE FROM `gamestatuts` WHERE `auth_id` = "' . Auth::user()->id . '" OR `user_id` = "' . Auth::user()->id . '"');
         tap(Auth::user(), $logout(...))->delete();
 
         $this->redirect('/', navigate: true);

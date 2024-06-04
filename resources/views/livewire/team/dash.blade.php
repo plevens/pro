@@ -22,6 +22,12 @@ new class extends Component
             <button>Pseudo</button>
             <br>
             <button>Messages</button>
+            <br>
+            <a href="{{route('supprime.game',['id'=>$gamers->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
+                <x-danger-button>
+                    Supprimer
+                </x-danger-button>
+            </a>
         </div>
     </div>
     @endif
@@ -34,13 +40,19 @@ new class extends Component
     @if($_teams->user_id == Auth::user()->id)
     <div>
         <div style="position:fixed;background-color:black;color:white;height:100%">
-            <a href="{{$_teams->id}}" wire:navigate>Membre(s)</a>
+            <a href="{{route('member.team')}}" wire:navigate>Membre(s)</a>
             <br>
             <button>Jeux</button>
             <br>
             <button>Pseudo</button>
             <br>
             <button>Messages</button>
+            <br>
+            <a href="">
+                <x-danger-button>
+                    Quitter le groupe
+                </x-danger-button>
+            </a>
         </div>
     </div>
     @endif

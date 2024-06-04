@@ -53,9 +53,25 @@ Route::get('/updates/{id}', [Navigate::class, 'changed'])
     ->middleware(['auth', 'verified'])
     ->name('changed');
 
+// mise a jour du profil du groupe 
+
 Route::put('/update/name/{id}', [NameUpdate::class, 'updateName'])
     ->middleware(['auth', 'verified'])
     ->name('update.name');
+
+// mise a jour du profil des utilisateur
+
+Route::put('/update/profil/{id}', [NameUpdate::class, 'updateProfile'])
+    ->middleware(['auth', 'verified'])
+    ->name('update.utilisateur');
+
+// quitter le groupe 
+
+Route::get('/team/quitter/{id}', [DeleteGame::class, 'suppression'])
+    ->middleware(['auth', 'verified'])
+    ->name('exit.team');
+
+//supprimer le groupe
 
 Route::get('/delete/{id}', [DeleteGame::class, 'supprimer'])
     ->middleware(['auth', 'verified'])

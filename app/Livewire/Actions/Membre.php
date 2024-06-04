@@ -12,10 +12,15 @@ class Membre extends Component
     public $team;
     public $membres;
     public $user;
+    public $team_invite;
+    public $team_invites;
     public function mount()
     {
         $this->team = Game::get()->where('status', 'true');
         $this->membres = Gamestatut::get();
+        $this->team_invite = Gamestatut::get()->where('activate', 'true');
+        $this->team_invites = Game::get();
+
         $this->user = User::get();
     }
     public function render()

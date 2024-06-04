@@ -12,8 +12,8 @@ class AddMember extends Component
 {
     public function render()
     {
-
-        return view('livewire.team.add-member');
+        $game = Game::get()->where('status', 'true');
+        return view('livewire.team.add-member', compact('game'));
     }
     public string $email = '';
     public $team_id;
