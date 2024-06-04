@@ -90,12 +90,15 @@ Route::view('/seen/game', 'seengame')
     ->middleware(['auth', 'verified'])
     ->name('seengame');
 
+<<<<<<< HEAD
 // Message root 
 
 Route::view('/team/message','sms')
     ->middleware(['auth','verified'])
     ->name('smsTeam');
     
+=======
+>>>>>>> 243cbb05da81075a345138317e99f041ef5d7b00
 
 //notification root 
 Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
@@ -107,5 +110,19 @@ Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
 Route::view('/membres', 'member')
     ->middleware(['auth', 'verified'])
     ->name('member.team');
+// bloquer un utilisateur du groupe 
+Route::get('/bloquer/{id}', [NameUpdate::class, 'bloquer'])
+    ->middleware(['auth', 'verified'])
+    ->name('bloc.member');
+// debloquer un utilisateur du groupe 
+Route::get('/debloquer/{id}', [NameUpdate::class, 'debloquer'])
+    ->middleware(['auth', 'verified'])
+    ->name('debloc.member');
+// supprimer definitif un membre 
+
+
+Route::get('/delete/member/{id}', [DeleteGame::class, 'suppressions'])
+    ->middleware(['auth', 'verified'])
+    ->name('delete.member');
 
 require __DIR__ . '/auth.php';
