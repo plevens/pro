@@ -89,6 +89,12 @@ Route::view('/team/game', 'jeux')
 Route::view('/seen/game', 'seengame')
     ->middleware(['auth', 'verified'])
     ->name('seengame');
+
+// Message root 
+
+Route::view('/team/message','sms')
+    ->middleware(['auth','verified'])
+    ->name('smsTeam');
     
 
 //notification root 
