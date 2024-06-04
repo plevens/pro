@@ -32,7 +32,7 @@ new class extends Component
             @foreach($membres as $_membre)
             @if($_membre->auth_id == Auth::user()->id && !empty($_membre->user_id))
             @php
-            $date = strtotime($_membre->created_at);
+            $date = strtotime($_membre->updated_at);
             $format = date('d/m/Y',$date);
             @endphp
             @if($users->id == $_membre->user_id)
