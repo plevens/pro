@@ -5,6 +5,7 @@ namespace App\Livewire\Sms;
 use App\Models\Game;
 use App\Models\Gamestatut;
 use App\Models\Msg;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -14,7 +15,11 @@ class Message extends Component
     public string $text = "";
     public function render()
     {
-        return view('livewire.sms.message');
+      $user = User::get();
+      $auth_id = Auth::user()->id;
+      $game = Game::get();
+      $sms = Msg::get();
+        return view('livewire.sms.message',compact('sms','game','auth_id','user'));
     }
 
     public function texto(): void
