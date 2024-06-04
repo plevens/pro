@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('accepted');
             $table->string('role');
             $table->string('team_id');
+            $table->string('pseudo');
+            $table->string('avatar');
             $table->timestamps();
         });
     }

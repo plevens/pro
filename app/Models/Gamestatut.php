@@ -15,6 +15,8 @@ class Gamestatut extends Model
         'activate',
         'role',
         'accepted',
+        'avatar',
+        'pseudo',
         'team_id'
     ];
 }

@@ -11,6 +11,7 @@ new class extends Component
 ?>
 
 <div>
+    @if($ids == Auth::user()->id)
     <center>
         <h3>
             Suppression du jeux
@@ -21,4 +22,5 @@ new class extends Component
             </x-danger-button>
         </a>
     </center>
+    @endif
 </div>

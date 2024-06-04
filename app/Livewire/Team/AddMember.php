@@ -46,6 +46,8 @@ class AddMember extends Component
                 'role' => 'gameur',
                 'activate' => 'false',
                 'accepted' => 'waiting',
+                'avatar' => $this->email[0],
+                'pseudo' => rand(10, 9999),
                 'team_id' => $this->team_id
             ]);
             session()->flash('msg', '201');
@@ -58,6 +60,8 @@ class AddMember extends Component
                 'role' => 'gameur',
                 'activate' => 'false',
                 'accepted' => 'waiting',
+                'avatar' => $this->email[0],
+                'pseudo' => rand(10, 9999),
                 'team_id' => $this->team_id
             ]);
             session()->flash('msg', '200');

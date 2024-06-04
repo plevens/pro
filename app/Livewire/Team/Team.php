@@ -36,6 +36,7 @@ class Team extends Component
             $path = $this->file->store();
         }
         DB::update('UPDATE `games` SET `status` = "false" WHERE `auth_id` = "' . Auth::user()->id . '"');
+        DB::update('UPDATE `gamestatuts` SET `activate` = "false" WHERE `user_id` = "' . Auth::user()->id . '"');
         Game::create([
             'nom' => $this->nom,
             'icon' => $path,

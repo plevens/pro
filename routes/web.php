@@ -65,6 +65,8 @@ Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');
 
+// Jeux root 
+
 Route::view('/team/game', 'jeux')
     ->middleware(['auth', 'verified'])
     ->name('gameTeam');
