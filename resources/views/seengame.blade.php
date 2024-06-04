@@ -1,7 +1,7 @@
-  <x-app-layout>
+<x-app-layout>
       <x-slot name="header">
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-              {{ __('Creer mon jeu') }}
+              {{ __('Mon jeu') }}
           </h2>
       </x-slot>
       @livewire('team.dash')
@@ -10,11 +10,8 @@
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                   <div class="p-6 text-gray-900">
                       <center>
-                          <livewire:match.macth />
+                          <livewire:match.seengame />
                       </center>
-                      <a href="{{route('seengame')}}" wire:navigate>
-                          Voir mon jeu
-                      </a>
                   </div>
               </div>
           </div>
