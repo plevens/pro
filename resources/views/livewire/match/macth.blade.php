@@ -9,12 +9,12 @@ new class extends Component
 ?>
  <center>
      @if(session('status') == '200')
-        <h1>
+        <h1 style="color: green">
             Jeu ajouter
         </h1>
      @endif
      @if(session('status') == '401')
-        <h1>
+        <h1 style="color: red">
             Vous avez deja ajouter un jeu
         </h1>
      @endif

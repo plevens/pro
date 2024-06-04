@@ -48,7 +48,7 @@ class Macth extends Component
 
 
         foreach ($this->jeu as $key) {
-           if ($key->auth_id == Auth::user()->id) {    
+           if ($key->auth_id == Auth::user()->id && $key->status == 'true') {    
                $this->n++;
                $this->id = $key->id;       
            }
@@ -56,7 +56,7 @@ class Macth extends Component
 
         foreach ($this->hobbies as $keys) {
             foreach ($this->jeu as $key) {
-                if ($key->auth_id == Auth::user()->id && $keys->game_id == $key->id) {
+                if ($keys->auth_id == Auth::user()->id && $keys->game_id == $key->id && $key->status == 'true') {
                     $this->i++;
                 }
             }
