@@ -90,6 +90,10 @@ Route::view('/seen/game', 'seengame')
     ->middleware(['auth', 'verified'])
     ->name('seengame');
 
+Route::get('/supprimer/jeux{id}' , [Macth::class, 'suppression'])
+    ->middleware(['auth', 'verified'])
+    ->name('supprimeJeu');
+
 // Message root 
 
 Route::view('/team/message','sms')

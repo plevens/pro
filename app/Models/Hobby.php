@@ -15,5 +15,6 @@ class Hobby extends Model
         'icon',
         'description',
         'banniere',
+        'status',
     ];
 }

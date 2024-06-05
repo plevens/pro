@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('icon');
             $table->string('description');
             $table->string('banniere');
+            $table->string('status');
             $table->timestamps();
         });
     }

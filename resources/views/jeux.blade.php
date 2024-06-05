@@ -15,6 +15,10 @@
                       <a href="{{route('seengame')}}" wire:navigate>
                           Voir mon jeu
                       </a>
+                      <br><br>
+                      <a href="{{route('blockjeu')}}" wire:navigate>
+                          Jeu bloquer
+                      </a>
                   </div>
               </div>
           </div>

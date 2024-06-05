@@ -16,10 +16,11 @@ new class extends Component
             <td>Nom</td>
             <td>Description</td>
             <td>Banniere</td>
+            <td>Menu</td>
         </tr>
-        @foreach($game as $keys)
         @foreach($jeux as $key)
-            @if($key->auth_id == $auth_id && $keys->auth_id == $auth_id && $keys->status == 'true' && $keys->id == $key->game_id)
+        @foreach($game as $keys)
+            @if($key->auth_id == $auth_id && $keys->auth_id == $auth_id && $keys->status == 'true' && $keys->id == $key->game_id && $key->status == 'true')
         <tr>
             @if(strlen($key->icon) > 1)
             <td><img src="{{asset('storage/'.$key->icon)}}" width="50cm" height="50cm" style="border-radius:4em" alt=""></td>
@@ -29,13 +30,20 @@ new class extends Component
             <td>{{$key->nom}}</td>
             <td>{{$key->description}}</td>
             <td>{{$key->banniere}}</td>
+            <td>
+                <a href="{{route('supprimeJeu',['id'=>$key->id])}}" wire:navigate>
+                    <x-danger-button>
+                        Supprimer
+                    </x-danger-button>
+                </a>
+            </td>
         </tr>   
             @endif
         @endforeach
         @endforeach
     </table>
     <br>
-    L'Admininstateurs : 
+    L'Admininstateur : 
     @foreach($user as $used)
     @foreach($game as $keys)
         @if($used->id == $keys->auth_id && $keys->status == 'true' && $keys->auth_id == $auth_id)
@@ -49,7 +57,7 @@ new class extends Component
     @foreach($game as $keys)
     @foreach($jeux as $key)
     @foreach($gamestatus as $kye)
-        @if($key->game_id == $kye->team_id && $keys->status == 'true' && $keys->id == $key->game_id && $kye->user_id == $used->id && $kye->auth_id == $auth_id)
+        @if($key->game_id == $kye->team_id && $keys->status == 'true' && $keys->id == $key->game_id && $kye->user_id == $used->id && $kye->auth_id == $auth_id && $key->status == 'true')
             <br>
             {{$used->name}} ({{$kye->pseudo}})
         @endif

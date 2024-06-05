@@ -10,7 +10,6 @@ new class extends Component
 ?>
 
 <div>
-    
     @foreach($game as $keys)
     @foreach($sms as $key)
     @foreach($user as $used)
@@ -18,7 +17,7 @@ new class extends Component
         <br>
            Vous : {{$key->message}}
         @endif
-        @if( $used->id == $key->auth_id && $keys->id == $key->team_id && $keys->status == 'true' && $key->auth_id != $auth_id )
+        @if($used->id == $key->auth_id && $key->team_id == $keys->id && $keys->status == 'true' && $key->auth_id != $auth_id)
         <br>
             {{$used->name}} : {{$key->message}}
         @endif

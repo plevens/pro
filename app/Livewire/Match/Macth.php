@@ -6,6 +6,7 @@ use App\Livewire\Nav\Navigate;
 use App\Models\Game;
 use App\Models\Hobby;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -18,6 +19,7 @@ class Macth extends Component
     public $jeu;
     public $n;
     public $i;
+    public $e;
     public $id;
     public $hobbies;
 
@@ -61,13 +63,23 @@ class Macth extends Component
 
         foreach ($this->hobbies as $keys) {
             foreach ($this->jeu as $key) {
-                if ($keys->auth_id == Auth::user()->id && $keys->game_id == $key->id && $key->status == 'true') {
+                if ($keys->auth_id == Auth::user()->id && $keys->game_id == $key->id && $key->status == 'true' && $keys->status == 'true') {
                     $this->i++;
                 }
             }
         }
 
-        if($this->n >= 1 && $this->i == 0){
+        foreach ($this->hobbies as $keys) {
+            foreach ($this->jeu as $key) {
+                if ($keys->auth_id == Auth::user()->id && $keys->game_id == $key->id && $key->status == 'true' && $keys->status == 'false') {
+                    $this->e++;
+                }
+            }
+        }
+
+
+
+        if($this->n >= 1 && $this->i == 0 && $this->e == 0){
             Hobby::create([
                 'game_id' => $this->id,
                 'auth_id' => Auth::user()->id,
@@ -75,12 +87,24 @@ class Macth extends Component
                 'icon' => $path,
                 'description' => $this->description,
                 'banniere' => 'jkjjkjkjk',
+                'status' => 'true'
                 ]);
-            session()->flash('status','200');
+            session()->flash('stat','200');
             $this->redirect('/team/game', navigate: true);
-        }else{
-            session()->flash('status','401');
+        }elseif($this->i >=1){
+            session()->flash('stat','401');
+            $this->redirect('/team/game', navigate: true);
+        }elseif($this->e >=1) {
+            session()->flash('stat','402');
             $this->redirect('/team/game', navigate: true);
         }
     }
+
+    public function suppression(Hobby $id)
+    {
+        $id->update();
+        DB::update('UPDATE `hobbies` SET `status` = "false" WHERE `game_id` = "'.$id->game_id.'"');
+        return back();
+    }
+
 }
