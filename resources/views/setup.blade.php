@@ -14,11 +14,9 @@
                 </div>
                 <div class="p-6 text-gray-900">
                     <livewire:team.add-member />
-
                 </div>
                 <div class="p-6 text-gray-900">
                     <livewire:team.delete-game />
-
                 </div>
             </div>
         </div>

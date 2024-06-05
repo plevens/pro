@@ -33,8 +33,11 @@ new class extends Component
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('notification')" :active="request()->routeIs('notification')" wire:navigate>
                         {{ __('Notification') }}
+                        <sup>
+                            @livewire('notification.pop-notif')
+                        </sup>
                     </x-nav-link>
 
                 </div>

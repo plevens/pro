@@ -11,7 +11,7 @@ new class extends Component
 
 ?>
 
-<div>
+<div wire:poll.5s>
     <x-drop>
         <x-slot name="triggers">
             @if($n >= 1)
@@ -39,13 +39,38 @@ new class extends Component
             @endif
             @endif
             @endforeach
+
+            <!-- invitation team  -->
+            @foreach($team_invitate as $_teams)
+            @foreach($team as $__teams)
+
+            @if($__teams->id == $_teams->team_id && $_teams->activate == 'true' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
+            @php
+            $i++;
+            @endphp
+            <b style="cursor: pointer;background-color:skyblue;border-radius:20px">
+                <b style="border-style:solid;color:green;padding:10px 10px;top:-1cm">&check;</b><b>{{$__teams->nom}}</b>
+
+                @if(strlen($__teams->icon) > 1)
+                &nbsp;
+                <input type="image" src="{{asset('storage/'.$__teams->icon)}}" width="25px" height="25cm" style="border-radius:4em" alt="Icone" />
+                @else
+                &nbsp;
+
+                <b style="padding: 2px 5px ; background-color:black;color:aliceblue;border-radius:4em">{{$__teams->icon}}</b>
+                @endif
+            </b>
+            @endif
+            @endforeach
+            @endforeach
+
             @if($i == 0)
             <b style="cursor: pointer;display: inline-block;">Team</b>
             @endif
             @else
-            <button>
+            <b style="cursor: pointer;display: inline-block;">
                 Team
-            </button>
+            </b>
             @endif
         </x-slot>
         <x-slot  name="contents">
@@ -64,6 +89,7 @@ new class extends Component
 
             @php
             $i = 0;
+            $e = 0;
             @endphp
 
 
@@ -75,7 +101,7 @@ new class extends Component
                 @php
                 $i++;
                 @endphp
-                @if($i < 6) <li>
+                @if($i < 3) <li>
                     <x-dropdown-link href="{{route('change',['id'=>$teams->id])}}" wire:navigate>{{$teams->nom}}</x-dropdown-link>
                     </li>
                     @endif
@@ -83,7 +109,24 @@ new class extends Component
                     @endif
                     @endforeach
             </ul>
-            @endif
+            <!-- team accepter non activer  -->
+            <ul>
+                @foreach($team_invitate as $_teams)
+                @foreach($team as $teams)
+                @if($teams->id == $_teams->team_id && $_teams->activate == 'false' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
+                @php
+                $e++;
+                @endphp
+                @if($e < 3) <li>
+                    <x-dropdown-link href="{{route('changed',['id'=>$_teams->id])}}" wire:navigate>{{$teams->nom}}</x-dropdown-link>
+                    </li>
+                    @endif
+                    @endif
+                    @endforeach
+                    @endforeach
+
+                    @endif
+            </ul>
             <x-dropdown-link href="{{route('team')}}" wire:navigate>
                 voir tout les teams...
             </x-dropdown-link>
