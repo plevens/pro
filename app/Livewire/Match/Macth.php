@@ -107,4 +107,18 @@ class Macth extends Component
         return back();
     }
 
+    public function suppdefinitive(Hobby $id)
+    {
+        $id->delete();
+        DB::delete('DELETE FROM `hobbies` WHERE `game_id` = "'.$id->game_id.'"');
+        return back();
+    }
+
+    public function restaurejeu(Hobby $id)
+    {
+        $id->update();
+        DB::update('UPDATE `hobbies` SET `status` = "true" WHERE `game_id` = "'.$id->game_id.'"');
+        return back();
+    }
+
 }

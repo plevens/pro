@@ -18,9 +18,6 @@ new class extends Component
     @endif
     @if(session('stat') == '402')
         <b>Vous avez deja un jeu bloquer</b> <br>
-        <a href="" wire:navigate>
-            Cliquer ici pour plus d'information à ce sujet
-        </a>
     @endif
     <br>
     <form wire:submit="startGame" enctype="multipart/form-data">
