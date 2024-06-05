@@ -42,7 +42,7 @@ new class extends Component
             <br>
             <button>Jeux</button>
             <br>
-            <button>Pseudo</button>
+            <a href="{{route('avatar.pseudo')}}" wire:navigate>Pseudo & avatar</a>
             <br>
             <a href="{{route('smsTeam')}}" wire:navigate>Messages</a>
             <br>

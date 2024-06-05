@@ -11,8 +11,9 @@ new class extends Component
 ?>
 
 <div>
-    @if($ids == Auth::user()->id)
     <center>
+        @if($ids == Auth::user()->id)
+
         <h3>
             Suppression du jeux
         </h3>
@@ -21,6 +22,16 @@ new class extends Component
                 Supprimer
             </x-danger-button>
         </a>
+
+        @endif
+        <br>
+        @if($users == Auth::user()->id)
+        <h2>Vous etes dans le groupe</h2>
+        <a href="{{route('exit.team',['id'=>$_team_id])}}" wire:navigate>
+            <x-danger-button>
+                Quitter le groupe
+            </x-danger-button>
+        </a>
+        @endif
     </center>
-    @endif
 </div>

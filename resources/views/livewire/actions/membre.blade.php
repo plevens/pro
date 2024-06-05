@@ -22,7 +22,7 @@ new class extends Component
         <a href="{{route('membre.sup')}}">Ajouter un membre</a>
 
         <table cellpadding="10%" class="table w-6 border-2" style="text-align:center">
-            <tr class="bg-dark text-white">
+            <tr class="">
                 <td>
 
                 </td>
@@ -135,7 +135,7 @@ new class extends Component
         @if($i == 1)
 
         <table cellpadding="10%" class="table w-4" style="text-align:center">
-            <tr class="bg-dark text-white">
+            <tr class="">
                 <td>
 
                 </td>

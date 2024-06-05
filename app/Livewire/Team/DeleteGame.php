@@ -12,14 +12,22 @@ class DeleteGame extends Component
 {
     public $id;
     public $ids;
+    public $users;
+    public $_team_id;
     public function mount(): void
     {
         $idgame = Game::get()->where('status', 'true');
-
+        $idgamestatus = Gamestatut::get()->where('activate', 'true');
         foreach ($idgame as $key) {
             if ($key->auth_id == Auth::user()->id) {
                 $this->id = $key->id;
                 $this->ids = $key->auth_id;
+            }
+        }
+        foreach ($idgamestatus as $keys) {
+            if ($keys->user_id == Auth::user()->id) {
+                $this->_team_id = $keys->id;
+                $this->users = $keys->user_id;
             }
         }
     }
