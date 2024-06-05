@@ -90,16 +90,20 @@ Route::view('/seen/game', 'seengame')
     ->middleware(['auth', 'verified'])
     ->name('seengame');
 
+Route::view('/jeu/bloquer', 'seengame')
+    ->middleware(['auth', 'verified'])
+    ->name('seengame');
+
 Route::get('/supprimer/jeux{id}' , [Macth::class, 'suppression'])
     ->middleware(['auth', 'verified'])
     ->name('supprimeJeu');
 
 // Message root 
 
-Route::view('/team/message','sms')
-    ->middleware(['auth','verified'])
+Route::view('/team/message', 'sms')
+    ->middleware(['auth', 'verified'])
     ->name('smsTeam');
-    
+
 
 //notification root 
 Route::get('/notification/{id}', [Notification::class, 'accepteInvitation'])
@@ -131,5 +135,9 @@ Route::get('/delete/member/{id}', [DeleteGame::class, 'suppressions'])
 Route::view('/ajouter/membre', 'membre_sup')
     ->middleware(['auth', 'verified'])
     ->name('membre.sup');
+//pseudo members 
+Route::view('/pseudo', 'pseudo')
+    ->middleware(['auth', 'verified'])
+    ->name('avatar.pseudo');
 
 require __DIR__ . '/auth.php';

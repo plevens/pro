@@ -64,13 +64,7 @@ new class extends Component
             <br>
             <x-primary-button>Modifier</x-primary-button>
         </form>
-        <br>
-        <h2>Vous etes dans le groupe</h2>
-        <a href="{{route('exit.team',['id'=>$_games->id])}}" wire:navigate>
-            <x-danger-button>
-                Quitter le groupe
-            </x-danger-button>
-        </a>
+
         @endif
         @endforeach
 

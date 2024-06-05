@@ -22,6 +22,9 @@ new class extends Component
         @if(session('msg') == '200')
         <h2>Nous avons envoyer un email a l'adresse email demander . il n'est pas dans le site</h2>
         @endif
+        @if(session('msg') == '401')
+        <h2>Vous avez deja ajouter cette personne au groupe</h2>
+        @endif
         @if(session('msg') == '201')
         <h2>Nous avons envoyer une demande a l'utilisateur demander , merci.</h2>
         @endif
