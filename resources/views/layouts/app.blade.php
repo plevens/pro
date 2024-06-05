@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('Styles/style.css')}}">
+    <link rel="stylesheet" href="{{asset('style/style.css')}}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,7 +19,6 @@
     <div class="min-h-screen bg-gray-100">
 
         <livewire:layout.navigation />
-
         <!-- Page Heading -->
         @if (isset($header))
         <header class="bg-white shadow">

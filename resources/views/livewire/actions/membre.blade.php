@@ -118,22 +118,19 @@ new class extends Component
         @php
         $i = 0;
         @endphp
-
-        @foreach($team_invites as $originTeam)
         @foreach($membres as $member)
-        @if($member->user_id == Auth::user()->id && $member->activate == "true" && $member->team_id == $originTeam->id)
-
+        @if($member->user_id == Auth::user()->id && $member->activate == "true")
+        @foreach($team_invites as $originTeam)
+        @if($originTeam->id == $member->team_id)
         Membre du groupe ({{$originTeam->membre}})
-
+        @endif
+        @endforeach
         @php
         $i++;
         @endphp
         @endif
         @endforeach
-        @endforeach
-
         @if($i == 1)
-
         <table cellpadding="10%" class="table w-4" style="text-align:center">
             <tr class="">
                 <td>
@@ -155,13 +152,14 @@ new class extends Component
                     Menu
                 </td>
             </tr>
+
             @foreach($membres as $members)
-            @foreach($team as $key)
+            @foreach($team_invites as $key)
             @php
             $date = strtotime($members->updated_at);
             $format = date('d/m/Y',$date);
             @endphp
-            @if(!empty($members->user_id))
+            @if(!empty($members->user_id) && $key->id == $members->team_id)
             <tr>
                 <td>
 

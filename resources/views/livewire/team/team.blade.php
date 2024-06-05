@@ -11,10 +11,10 @@ new class extends Component
 
 ?>
 
-<div >
+<div>
     <center>
         <h1 class="text-primary">
-            Ajouter votre groupe
+            Creer votre groupe
         </h1>
         <form wire:submit="addGame" enctype="multipart/form-data">
             <input wire:model="nom" type="text" placeholder="Nom" name="" id="Ajouter_votre_groupe">
@@ -28,7 +28,7 @@ new class extends Component
             <b wire:loading="chargement"></b>
             @endif
             <br>
-            <input type="submit" value="Enregistrer" >
+            <input type="submit" value="Enregistrer">
         </form>
     </center>
 </div>
