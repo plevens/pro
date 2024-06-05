@@ -18,9 +18,11 @@ new class extends Component
             Suppression du jeux
         </h3>
         <a href="{{route('supprime.game',['id'=>$id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
-            <x-danger-button>
+           <br>
+           
+        <button id="Supprimer">
                 Supprimer
-            </x-danger-button>
+            </button>
         </a>
 
         @endif

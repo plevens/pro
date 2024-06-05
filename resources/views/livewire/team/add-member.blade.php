@@ -32,9 +32,9 @@ new class extends Component
             <input type="email" wire:model="email" placeholder="email de l'utilisateur" name="email" id="">
             <br>
             <br>
-            <x-primary-button>
+            <button id="button-ajouter">
                 Ajouter
-            </x-primary-button>
+            <button>
         </form>
         @endif
         @endforeach

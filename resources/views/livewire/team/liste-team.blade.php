@@ -12,7 +12,7 @@ new class extends Component
 
 <div wire:poll.5s>
     <center>
-        <h1>
+        <h1 id="team">
             Team
         </h1>
     </center>
@@ -28,17 +28,17 @@ new class extends Component
         @endif
         <!-- tableau pour afficher les teams(groupes) disponible  -->
         <table class="table" cellspacing="50%" cellpadding="20%">
-            <tr class="bg-dark">
+            <tr class="tr"> 
                 <td>
+                    
+                </td>
+                <td id="td">
                     Nom
                 </td>
                 <td>
                     Creer le
                 </td>
-                <td>
-                    icon
-                </td>
-                <td>
+                <td id="td">
                     status
                 </td>
                 <td>
@@ -50,9 +50,16 @@ new class extends Component
 
             <tr>
                 <td>
+            @if(strlen($games->icon) == 1)
+                    {{$games->icon}}
+                    @else
+                    <img src="{{asset('storage/'.$games->icon)}}" width="55cm" style="border-radius:4cm" alt="Icone">
+                    @endif
+                    </td>
+                <td id="td2">
                     {{$games->nom}}
                 </td>
-                <td>
+                <td >
                     {{$games->description}}
                 </td>
                 <td>
@@ -77,18 +84,25 @@ new class extends Component
             @if($games->status == "false" && $games->auth_id == Auth::user()->id)
             <tr>
 
+                <td id="td2">
                 <td>
+            @if(strlen($games->icon) == 1)
+                    {{$games->icon}}
+                    @else
+                    <img src="{{asset('storage/'.$games->icon)}}" width="55cm" style="border-radius:4cm" alt="Icone">
+                    @endif
+                    </td>
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         {{$games->nom}}
 
                     </a>
                 </td>
-                <td>
+                <td >
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         {{$games->description}}
                     </a>
                 </td>
-                <td>
+                <td >
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         @if(strlen($games->icon) == 1)
                         {{$games->icon}}
@@ -97,7 +111,7 @@ new class extends Component
                         @endif
                     </a>
                 </td>
-                <td>
+                <td >
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         <b style="color:green">&xcirc;</b>
                     </a>

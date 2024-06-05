@@ -11,15 +11,15 @@ new class extends Component
 
 ?>
 
-<div>
+<div >
     <center>
-        <h1>
+        <h1 class="text-primary">
             Ajouter votre groupe
         </h1>
         <form wire:submit="addGame" enctype="multipart/form-data">
-            <input wire:model="nom" type="text" placeholder="Nom" name="" id="">
+            <input wire:model="nom" type="text" placeholder="Nom" name="" id="Ajouter_votre_groupe">
             <br>
-            <label for="tof">Photo du groupe</label> <input hidden wire:model="file" type="file" name="" id="tof">
+            <label for="tof" class="tof">Photo du groupe </label> <input hidden wire:model="file" type="file" name="" id="tof">
             <br>
             <b></b>
             @if($file)
