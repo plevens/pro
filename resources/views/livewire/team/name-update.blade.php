@@ -32,7 +32,7 @@ new class extends Component
             <input type="hidden" name="id" value="{{$games->id}}" id="">
             <br>
             <br>
-            <x-primary-button>Modifier</x-primary-button>
+            <button id="mod">Modifier</button>
         </form>
         @endif
         @endforeach

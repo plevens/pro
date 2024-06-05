@@ -32,7 +32,7 @@ class AddMember extends Component
         }
         $member = Gamestatut::get();
         foreach ($member as $keys) {
-            if ($this->email == $keys->email) {
+            if ($this->email == $keys->email && $this->team_id == $keys->team_id) {
                 $this->nbr++;
             }
         }

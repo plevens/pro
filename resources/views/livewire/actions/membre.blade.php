@@ -61,7 +61,7 @@ new class extends Component
                     @if(strlen($_membre->avatar) == 1)
                     <b style="background-color:cadetblue;border-radius:2em;padding:20px 20px ;font-weight:bold;">{{$_membre->avatar}}</b>
                     @else
-                    <input type=" image" src="{{asset('storage/'.$_membre->avatar)}}" style="border-radius:4em" alt="" width="50cm" height="50cm">
+                    <input type="image" src="{{asset('storage/'.$_membre->avatar)}}" style="border-radius:4em" alt="" width="50cm" height="50cm">
                     @endif
                 </td>
                 <td>
