@@ -117,12 +117,16 @@ new class extends Component
         </table>
         @php
         $i = 0;
+        $id = 0;
         @endphp
         @foreach($membres as $member)
         @if($member->user_id == Auth::user()->id && $member->activate == "true")
         @foreach($team_invites as $originTeam)
         @if($originTeam->id == $member->team_id)
         Membre du groupe ({{$originTeam->membre}})
+        @php
+        $id = $originTeam->id;
+        @endphp
         @endif
         @endforeach
         @php
@@ -154,12 +158,12 @@ new class extends Component
             </tr>
 
             @foreach($membres as $members)
-            @foreach($team_invites as $key)
+            @if(!empty($members->user_id) && $members->team_id == $id)
             @php
             $date = strtotime($members->updated_at);
             $format = date('d/m/Y',$date);
             @endphp
-            @if(!empty($members->user_id) && $key->id == $members->team_id)
+
             <tr>
                 <td>
 
@@ -192,8 +196,6 @@ new class extends Component
                 @endif
             </tr>
             @endif
-
-            @endforeach
             @endforeach
         </table>
         @endif
