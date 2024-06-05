@@ -1,9 +1,11 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mon team') }}
-        </h2>
-    </x-slot>
+    <nav class="navbar navbar-expand-sm ">
+        <slot name="header" >
+            <h2 id="Mon_team"class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Mon team') }}
+            </h2>
+         </slot>
+    </nav>
     <div style="position:fixed;background-color:black;color:white;height:100%">
         <button>Membre(s)</button>
         <br>

@@ -12,34 +12,34 @@ new class extends Component
 
 <div>
     <center>
-        <h1>
+        <h1 id="team">
             Team
         </h1>
     </center>
     <br>
     <center>
         <table class="table" cellspacing="50%" cellpadding="20%">
-            <tr class="bg-dark">
-                <td>
+            <tr class="tr"> 
+                <td id="td">
                     Nom
                 </td>
-                <td>
+                <td id="td">
                     Creation du
                 </td>
-                <td>
+                <td id="td">
                     icon
                 </td>
-                <td>
+                <td id="td">
                     status
                 </td>
             </tr>
             @foreach($game as $games)
             @if($games->status == "true")
             <tr>
-                <td>
+                <td id="td2">
                     {{$games->nom}}
                 </td>
-                <td>
+                <td >
                     {{$games->description}}
                 </td>
                 <td>
@@ -56,18 +56,18 @@ new class extends Component
             @else
             <tr>
 
-                <td>
+                <td id="td2">
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         {{$games->nom}}
 
                     </a>
                 </td>
-                <td>
+                <td >
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         {{$games->description}}
                     </a>
                 </td>
-                <td>
+                <td >
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         @if(strlen($games->icon) == 1)
                         {{$games->icon}}
@@ -76,7 +76,7 @@ new class extends Component
                         @endif
                     </a>
                 </td>
-                <td>
+                <td >
                     <a href="{{route('change',['id'=>$games->id])}}" wire:navigate>
                         <b style="color:green">&xcirc;</b>
                     </a>

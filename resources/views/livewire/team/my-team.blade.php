@@ -13,9 +13,9 @@ new class extends Component
 <div>
     @foreach($team as $teams)
     @if($teams->auth_id == Auth::user()->id)
-    <h3>Team creer le {{$teams->description}}</h3>
+    <h3 id="Team_creer">Team creer le {{$teams->description}}</h3>
     <br>
-    <h2>Membre {{$teams->member}}</h2>
+    <h2 id="Membre">Membre {{$teams->member}}</h2>
     @endif
     @endforeach
 </div>

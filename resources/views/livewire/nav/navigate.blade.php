@@ -48,7 +48,7 @@ new class extends Component
             </button>
             @endif
         </x-slot>
-        <x-slot name="contents">
+        <x-slot  name="contents">
             <x-dropdown-link :href="route('addTeam')" wire:navigate>
                 {{ __('Creer un team') }}
             </x-dropdown-link>

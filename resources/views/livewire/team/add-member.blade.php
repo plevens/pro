@@ -1,17 +1,17 @@
 <div>
 
-    <center>
-        <h2>
+    <center >
+        <h2 id="Ajouter_un_membre">
             Ajouter un membre
         </h2>
-        <br>
+        <br> 
         <form action="">
-            <input type="email" placeholder="email de l'utilisateur" name="" id="">
+            <input type="email" placeholder="email de l'utilisateur" name="" id="email" >
             <br>
             <br>
-            <x-primary-button>
+            <button id="button-ajouter">
                 Ajouter
-            </x-primary-button>
+            <button>
         </form>
     </center>
 
