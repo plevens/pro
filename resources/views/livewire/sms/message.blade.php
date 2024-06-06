@@ -10,6 +10,9 @@ new class extends Component
 ?>
 
 <div>
+    @if($n >=1)
+        <b>Vous devez au moin etre deux dans un groupe pour pouvoir envoyer des messages</b>
+    @else
     @foreach($game as $keys)
     @foreach($sms as $key)
     @foreach($user as $used)
@@ -32,4 +35,5 @@ new class extends Component
              Envoyer
          </button>
     </form>
+    @endif
 </div>
