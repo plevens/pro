@@ -30,15 +30,12 @@ class Macth extends Component
         return view('livewire.match.macth');
     }
 
-    
-    
-
     public function startGame()
     {
-          $this->validate([
-            'nom'=>'required',
-            'description'=>'required',
-            'banniere' =>'required',
+        $this->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'banniere' => 'required',
         ]);
 
         $this->banniere->store('public');
@@ -58,10 +55,10 @@ class Macth extends Component
         $this->hobbies = Hobby::get();
 
         foreach ($this->jeu as $key) {
-           if ($key->auth_id == Auth::user()->id && $key->status == 'true') {    
-               $this->n++;
-               $this->id = $key->id;       
-           }
+            if ($key->auth_id == Auth::user()->id && $key->status == 'true') {
+                $this->n++;
+                $this->id = $key->id;
+            }
         }
 
         foreach ($this->hobbies as $keys) {
@@ -80,7 +77,7 @@ class Macth extends Component
             }
         }
 
-        if($this->n >= 1 && $this->i == 0 && $this->e == 0){
+        if ($this->n >= 1 && $this->i == 0 && $this->e == 0) {
             Hobby::create([
                 'game_id' => $this->id,
                 'auth_id' => Auth::user()->id,
@@ -89,14 +86,14 @@ class Macth extends Component
                 'description' => $this->description,
                 'banniere' => $ban,
                 'status' => 'true'
-                ]);
-            session()->flash('stat','200');
+            ]);
+            session()->flash('stat', '200');
             $this->redirect('/team/game', navigate: true);
-        }elseif($this->i >=1){
-            session()->flash('stat','401');
+        } elseif ($this->i >= 1) {
+            session()->flash('stat', '401');
             $this->redirect('/team/game', navigate: true);
-        }elseif($this->e >=1) {
-            session()->flash('stat','402');
+        } elseif ($this->e >= 1) {
+            session()->flash('stat', '402');
             $this->redirect('/team/game', navigate: true);
         }
     }
@@ -104,22 +101,21 @@ class Macth extends Component
     public function suppression(Hobby $id)
     {
         $id->update();
-        DB::update('UPDATE `hobbies` SET `status` = "false" WHERE `game_id` = "'.$id->game_id.'"');
+        DB::update('UPDATE `hobbies` SET `status` = "false" WHERE `game_id` = "' . $id->game_id . '"');
         return back();
     }
 
     public function suppdefinitive(Hobby $id)
     {
         $id->delete();
-        DB::delete('DELETE FROM `hobbies` WHERE `game_id` = "'.$id->game_id.'"');
+        DB::delete('DELETE FROM `hobbies` WHERE `game_id` = "' . $id->game_id . '"');
         return back();
     }
 
     public function restaurejeu(Hobby $id)
     {
         $id->update();
-        DB::update('UPDATE `hobbies` SET `status` = "true" WHERE `game_id` = "'.$id->game_id.'"');
+        DB::update('UPDATE `hobbies` SET `status` = "true" WHERE `game_id` = "' . $id->game_id . '"');
         return back();
     }
-
 }
