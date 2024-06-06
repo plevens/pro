@@ -30,7 +30,9 @@ new class extends Component
             @endif
             <td>{{$key->nom}}</td>
             <td>{{$key->description}}</td>
-            <td>{{$key->banniere}}</td>
+            @if(strlen($key->banniere) > 1)
+            <td><img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.5cm; width: 2cm;" alt=""><td>
+            @endif
             <td>
                 <a href="{{route('restaurejeu',['id'=>$key->id])}}" wire:navigate>
                     <button id="button-ajouter">
