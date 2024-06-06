@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Friend\Friend;
+use App\Livewire\Match\JeuPerso;
 use App\Livewire\Nav\Navigate;
 use App\Livewire\Notification\Notification;
 use App\Livewire\Team\DeleteGame;
@@ -106,6 +107,18 @@ Route::get('/deletejeu{id}', [Macth::class, 'suppdefinitive'])
 Route::get('/restaurejeu{id}', [Macth::class, 'restaurejeu'])
     ->middleware(['auth', 'verified'])
     ->name('restaurejeu');
+
+// Jeu perso 
+
+Route::view('/parametre/jeu personnel', 'jeu_perso')
+    ->middleware(['auth', 'verified'])
+    ->name('jeuPerso');
+
+Route::get('/ajouter/jeu personnel', [JeuPerso::class, 'jeux'])
+    ->middleware(['auth', 'verified'])
+    ->name('addjeuPerso');
+
+
 
 
 
