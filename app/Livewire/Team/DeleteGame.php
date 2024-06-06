@@ -40,6 +40,7 @@ class DeleteGame extends Component
         $id->delete();
         DB::delete('DELETE FROM `gamestatuts` WHERE `team_id` ="' . $id->id . '"');
         DB::delete('DELETE FROM `msgs` WHERE `team_id` = "' . $id->id . '"');
+        DB::delete('DELETE FROM `hobbies` WHERE `game_id` = "' . $id->id . '" ');
         return redirect('/team');
     }
     public function suppression(Gamestatut $id)

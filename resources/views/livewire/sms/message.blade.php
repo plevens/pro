@@ -9,7 +9,7 @@ new class extends Component
 
 ?>
 
-<div wire:poll.4>
+<div wire:poll.5s>
     @if($n >=1)
         <b>Vous devez au moin etre deux dans un groupe pour pouvoir envoyer des messages</b>
     @else
