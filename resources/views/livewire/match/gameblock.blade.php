@@ -22,7 +22,7 @@ new class extends Component
         </tr>
         @foreach($jeux as $key)
         @foreach($game as $keys)
-        @if($key->auth_id == $auth_id && $keys->auth_id == $auth_id && $keys->status == 'true' && $keys->id == $key->game_id && $key->status == 'false')
+        @if($key->auth_id == $auth_id && $keys->auth_id == $auth_id && $keys->status == 'true' && $keys->id == $key->team_id && $key->status == 'false')
         <tr>
             @if(strlen($key->icon) > 1)
             <td><img src="{{asset('storage/'.$key->icon)}}" width="50cm" height="50cm" style="border-radius:4em" alt=""></td>
@@ -67,7 +67,7 @@ new class extends Component
     @foreach($game as $keys)
     @foreach($jeux as $key)
     @foreach($gamestatus as $kye)
-    @if($key->game_id == $kye->team_id && $keys->status == 'true' && $keys->id == $key->game_id && $kye->user_id == $used->id && $kye->auth_id == $auth_id && $key->status == 'false')
+    @if($key->team_id == $kye->team_id && $keys->status == 'true' && $keys->id == $key->team_id && $kye->user_id == $used->id && $kye->auth_id == $auth_id && $key->status == 'false')
     <br>
     {{$used->name}} ({{$kye->pseudo}})
     @endif
