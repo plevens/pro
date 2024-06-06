@@ -19,18 +19,15 @@ new class extends Component
         @if($key->auth_id == Auth::user()->id)
         Membre du groupe ({{$key->membre}})
         <br>
-        <a href="{{route('membre.sup')}}" class="btn btn-primary"><img src="{{asset('build/icons/person-plus.svg')}}" alt="" srcset=""></a>
+        <a href="{{route('membre.sup')}}" class="btn btn-primary"><img src="{{asset('icons/person-plus.svg')}}" alt="" srcset=""></a>
 
-        <table cellpadding="10%" class="table w-6 border-2" style="text-align:center">
+        <table cellpadding="5%" class="table w-2" style="text-align:center">
             <tr class="">
                 <td>
 
                 </td>
                 <td>
                     Pseudo
-                </td>
-                <td>
-                    Email
                 </td>
                 <td>
                     Role
@@ -71,37 +68,31 @@ new class extends Component
 
                 </td>
                 <td>
-
-                    {{$_membre->email}}
-
-
-                </td>
-                <td>
                     {{$_membre->role}}
                 </td>
                 <td>
                     {{$format}}
                 </td>
                 <td>
-
-                    <a href="" class="btn btn-dark">
-                        Modif
-                    </a>
-                    <br>
                     <b style="display:inline-block">
+                        <a href="">
+                            &nbsp;
+                            <input type="image" src="{{asset('icons/pen.svg')}}" alt="" srcset="">
+                        </a>
+
                         @if($_membre->activate != 'bloque')
                         <a href="{{route('bloc.member',['id'=>$_membre->id])}}" wire:navigate>
-                            <b>
-                                <img src="{{asset('build/icons/person-slash.svg')}}" alt="" srcset="">
-                            </b>
+
+                            <input type="image" src="{{asset('icons/person-slash.svg')}}" alt="" srcset="">
+
                         </a>
                         @else
                         <a href="{{route('debloc.member',['id'=>$_membre->id])}}" wire:navigate>
-                            <input type="image" src="{{asset('build/icons/plus-square.svg')}}" class="text-danger" alt="" srcset="">
+                            <input type="image" src="{{asset('icons/person-slash1.svg')}}" alt="" srcset="">
                         </a>
                         @endif
                         <a href="{{route('delete.member',['id'=>$_membre->id])}}">
-                            <img src="{{asset('build/icons/trash.svg')}}" alt="" srcset="">
+                            <input type="image" src="{{asset('icons/trash.svg')}}" alt="" srcset="">
                         </a>
                     </b>
                 </td>

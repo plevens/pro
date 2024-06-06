@@ -9,7 +9,7 @@ new class extends Component
 }
 
 ?>
-<div wire:poll.5s>
+<div wire:poll.5s class="fixed-top" style="margin-top:1.9cm">
     @if($n >= 1)
     @foreach($game as $gamers)
     @if($gamers->auth_id == Auth::user()->id)
