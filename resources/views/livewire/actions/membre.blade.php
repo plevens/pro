@@ -12,7 +12,7 @@ new class extends Component
 <div wire:poll.5s>
     <center>
         @if(session('msg'))
-        <b class="bg-warning text-white easy-in-out">! Vous avez supprimer un utilisateur du groupe</b>
+        <b class="bg-warning text-white easy-out col h-3">! Vous avez supprimer un utilisateur du groupe</b>
         @endif
         <br>
         @foreach($team as $key)

@@ -10,7 +10,7 @@ new class extends Component
 
 ?>
 
-<div wire:poll.5s>
+<div>
     <center>
 
         @foreach($game as $games)

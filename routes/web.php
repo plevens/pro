@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Friend\Friend;
 use App\Livewire\Nav\Navigate;
 use App\Livewire\Notification\Notification;
 use App\Livewire\Team\DeleteGame;
@@ -94,21 +95,21 @@ Route::view('/jeu/bloquer', 'jeubloquer')
     ->middleware(['auth', 'verified'])
     ->name('blockjeu');
 
-Route::get('/supprimer/jeux{id}' , [Macth::class, 'suppression'])
+Route::get('/supprimer/jeux{id}', [Macth::class, 'suppression'])
     ->middleware(['auth', 'verified'])
     ->name('supprimeJeu');
 
-Route::get('/deletejeu{id}' , [Macth::class, 'suppdefinitive'])
+Route::get('/deletejeu{id}', [Macth::class, 'suppdefinitive'])
     ->middleware(['auth', 'verified'])
     ->name('deletejeu');
 
-Route::get('/restaurejeu{id}' , [Macth::class, 'restaurejeu'])
+Route::get('/restaurejeu{id}', [Macth::class, 'restaurejeu'])
     ->middleware(['auth', 'verified'])
     ->name('restaurejeu');
 
-    
 
-    
+
+
 
 // Message root 
 

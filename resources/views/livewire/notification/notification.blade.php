@@ -22,9 +22,10 @@ new class extends Component
     @else
     <b style="padding: 2px 5px ; background-color:black;color:aliceblue;border-radius:4em">{{$_teams->icon}}</b>
     @endif
-    {{$_teams->nom}} team vous demande de vous joindre dans son equipe.
+    {{$_teams->nom}} team vous demande de rejoindre son equipe.
     <br>
-    <a href="{{route('accepte.team',['id'=>$teams->id])}}" wire:navigate>Accepter</a>
+    <a href="{{route('accepte.team',['id'=>$teams->id])}}" class="btn btn-primary" wire:navigate>Accepter</a>
+    <a href="{{route('exit.team',['id'=>$teams->id])}}" class="btn btn-danger" wire:navigate>refuser</a>
     @endif
     @endforeach
     @endforeach

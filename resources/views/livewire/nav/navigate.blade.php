@@ -111,7 +111,28 @@ new class extends Component
                     @endforeach
             </ul>
             <!-- team accepter non activer  -->
+
             <ul>
+                @php
+                $p = 0;
+                @endphp
+                @foreach($team_invitate as $_teams)
+                @foreach($team as $teams)
+                @if($teams->id == $_teams->team_id && $_teams->activate == 'false' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
+                @php
+                $p++;
+                @endphp
+                @endif
+                @endforeach
+                @endforeach
+
+
+                @if($p>= 1)
+                <b>Team accepter</b>
+                @endif
+                <hr>
+
+
                 @foreach($team_invitate as $_teams)
                 @foreach($team as $teams)
                 @if($teams->id == $_teams->team_id && $_teams->activate == 'false' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
