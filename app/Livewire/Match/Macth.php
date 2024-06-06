@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\Hobby;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Validator;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,6 +16,7 @@ class Macth extends Component
     use  WithFileUploads;
     public string $nom = '';
     public string $description = '';
+    public $banniere;
     public $file;
     public $jeu;
     public $n;
@@ -25,10 +27,10 @@ class Macth extends Component
 
     public function render()
     {
-        
         return view('livewire.match.macth');
     }
 
+    
     
 
     public function startGame()
@@ -36,7 +38,11 @@ class Macth extends Component
           $this->validate([
             'nom'=>'required',
             'description'=>'required',
+            'banniere' =>'required',
         ]);
+
+        $this->banniere->store('public');
+        $ban = $this->banniere->store();
 
         if (empty($this->file)) {
             $path = $this->file = $this->nom[0];
@@ -51,15 +57,12 @@ class Macth extends Component
         $this->jeu = Game::get();
         $this->hobbies = Hobby::get();
 
-
         foreach ($this->jeu as $key) {
            if ($key->auth_id == Auth::user()->id && $key->status == 'true') {    
                $this->n++;
                $this->id = $key->id;       
            }
         }
-
-        
 
         foreach ($this->hobbies as $keys) {
             foreach ($this->jeu as $key) {
@@ -77,8 +80,6 @@ class Macth extends Component
             }
         }
 
-
-
         if($this->n >= 1 && $this->i == 0 && $this->e == 0){
             Hobby::create([
                 'game_id' => $this->id,
@@ -86,7 +87,7 @@ class Macth extends Component
                 'nom' => $this->nom,
                 'icon' => $path,
                 'description' => $this->description,
-                'banniere' => 'jkjjkjkjk',
+                'banniere' => $ban,
                 'status' => 'true'
                 ]);
             session()->flash('stat','200');

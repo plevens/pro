@@ -32,15 +32,15 @@ new class extends Component
             <td>{{$key->description}}</td>
             <td>{{$key->banniere}}</td>
             <td>
-                <a href="{{route('deletejeu',['id'=>$key->id])}}" wire:navigate>
-                    <x-danger-button>
-                        Supprimer definitivement
-                    </x-danger-button>
-                </a>
                 <a href="{{route('restaurejeu',['id'=>$key->id])}}" wire:navigate>
                     <button id="button-ajouter">
                         Restaurer
                     </button>
+                </a> <br><br>
+                <a href="{{route('deletejeu',['id'=>$key->id])}}" wire:navigate>
+                    <x-danger-button>
+                        Supprimer definitivement
+                    </x-danger-button>
                 </a>
             </td>
         </tr>   
