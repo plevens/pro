@@ -15,23 +15,34 @@ class Message extends Component
     public string $text = "";
     public function render()
     {
+      $n = 0;
+      $gamestat= Gamestatut::get();
       $user = User::get();
       $auth_id = Auth::user()->id;
-      $game = Game::get();
+      $game = Game::get()->where('status','true');
       $sms = Msg::get();
-        return view('livewire.sms.message',compact('sms','game','auth_id','user'));
+
+        foreach ($game as $key) {
+          foreach ($gamestat as $keys) {
+            if ($key->id != $keys->team_id) {
+              $n++;
+            }
+          }
+        }
+
+        return view('livewire.sms.message',compact('sms','game','auth_id','user','n'));
     }
 
     public function texto(): void
     {
       $this->stat = Gamestatut::get();
-      $this->jeu = Game::get();
+      $this->jeu = Game::get()->where('status','true');
       foreach ($this->jeu as $key) {
         foreach ($this->stat as $keys) {
-          if ($key->status == 'true' && $key->id == $keys->team_id) {
+          if ($key->id == $keys->team_id) {
             $team_id = $key->id;
           }
-          elseif ($key->status == 'true' && $key->id != $keys->team_id && $key->auth_id == Auth::user()->id) {
+          elseif ($key->id != $keys->team_id && $key->auth_id == Auth::user()->id) {
             $team_id = $key->id;
           }
         }
