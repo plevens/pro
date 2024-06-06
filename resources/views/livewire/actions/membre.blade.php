@@ -19,7 +19,7 @@ new class extends Component
         @if($key->auth_id == Auth::user()->id)
         Membre du groupe ({{$key->membre}})
         <br>
-        <a href="{{route('membre.sup')}}">Ajouter un membre</a>
+        <a href="{{route('membre.sup')}}" class="btn btn-primary"><img src="{{asset('build/icons/person-plus.svg')}}" alt="" srcset=""></a>
 
         <table cellpadding="10%" class="table w-6 border-2" style="text-align:center">
             <tr class="">
@@ -88,23 +88,22 @@ new class extends Component
                         Modif
                     </a>
                     <br>
-                    @if($_membre->activate != 'bloque')
-                    <a href="{{route('bloc.member',['id'=>$_membre->id])}}" wire:navigate class="btn btn-light" style="border-color:red;border-style:solid;border-radius:4em">
-                        <b style="border-style:solid;border:1;color:red;">
-                            -
-                        </b>
-                    </a>
-                    @else
-                    <a href="{{route('debloc.member',['id'=>$_membre->id])}}" wire:navigate class="btn btn-warning">
-                        +
-                    </a>
-                    @endif
-                    <a href="{{route('delete.member',['id'=>$_membre->id])}}" class="btn btn-danger" style="border-color:red;border-style:solid;border-radius:4em">
-
-                        &Cross;
-
-                    </a>
-
+                    <b style="display:inline-block">
+                        @if($_membre->activate != 'bloque')
+                        <a href="{{route('bloc.member',['id'=>$_membre->id])}}" wire:navigate>
+                            <b>
+                                <img src="{{asset('build/icons/person-slash.svg')}}" alt="" srcset="">
+                            </b>
+                        </a>
+                        @else
+                        <a href="{{route('debloc.member',['id'=>$_membre->id])}}" wire:navigate>
+                            <input type="image" src="{{asset('build/icons/plus-square.svg')}}" class="text-danger" alt="" srcset="">
+                        </a>
+                        @endif
+                        <a href="{{route('delete.member',['id'=>$_membre->id])}}">
+                            <img src="{{asset('build/icons/trash.svg')}}" alt="" srcset="">
+                        </a>
+                    </b>
                 </td>
 
             </tr>
@@ -144,9 +143,6 @@ new class extends Component
                     Pseudo
                 </td>
                 <td>
-                    Email
-                </td>
-                <td>
                     Role
                 </td>
                 <td>
@@ -175,9 +171,6 @@ new class extends Component
                 </td>
                 <td>
                     {{$members->pseudo}}
-                </td>
-                <td>
-                    {{$members->email}}
                 </td>
                 <td>
                     {{$members->role}}
