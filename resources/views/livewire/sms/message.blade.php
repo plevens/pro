@@ -11,20 +11,51 @@ new class extends Component
 ?>
 
 <div wire:poll.5s>
-    @foreach($game as $keys)
-    @foreach($sms as $key)
-    @foreach($user as $used)
-    @if($used->id == $key->auth_id && $keys->id == $key->team_id && $keys->status == 'true' && $key->auth_id == $auth_id)
+
+    @if($n == 1)
+
+    @foreach($mess as $msg)
+    @foreach($team as $teams)
+    @if($teams->auth_id == Auth::user()->id && $msg->auth_id == Auth::user()->id && $teams->status == "true" && $msg->team_id == $teams->id)
+    vous : {{$msg->message}}
     <br>
-    Vous : {{$key->message}}
+    @else
+    @if($teams->auth_id == Auth::user()->id && $msg->auth_id != Auth::user()->id && $teams->status == "true" && $msg->team_id == $teams->id)
+    @foreach($user as $users)
+    @if($msg->auth_id == $users->id)
+    {{$users->name}} :
     @endif
-    @if($used->id == $key->auth_id && $key->team_id == $keys->id && $keys->status == 'true' && $key->auth_id != $auth_id)
+    @endforeach
+    {{$msg->message}}
     <br>
-    {{$used->name}} : {{$key->message}}
+    @endif
     @endif
     @endforeach
     @endforeach
+    @endif
+
+
+    @if($e == 1)
+
+    @foreach($mess as $msg)
+    @foreach($_team as $_teams)
+    @if($_teams->user_id == Auth::user()->id && $msg->auth_id == Auth::user()->id && $_teams->activate == "true" && $msg->team_id == $_teams->team_id)
+    vous : {{$msg->message}}
+    <br>
+    @else
+    @if($_teams->user_id == Auth::user()->id && $msg->auth_id != Auth::user()->id && $_teams->activate == "true" && $msg->team_id == $_teams->team_id)
+    @foreach($user as $users)
+    @if($msg->auth_id == $users->id)
+    {{$users->name}} :
+    @endif
     @endforeach
+    {{$msg->message}}
+    <br>
+    @endif
+    @endif
+    @endforeach
+    @endforeach
+    @endif
     <form wire:submit="texto">
         <textarea wire:model="text" name="text" id="" cols="10" rows="1"></textarea>
         <x-input-error :messages="$errors->get('text')" class="mt-2" />

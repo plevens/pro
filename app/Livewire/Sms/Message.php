@@ -13,40 +13,64 @@ use Livewire\Component;
 class Message extends Component
 {
   public string $text = "";
+  public $team;
+  public $_team;
+  public $mess;
+  public $user;
+  public $team_accepte;
+  public $e;
+  public $n;
+  public $f;
+  public $id_team;
+
+  public function mount()
+  {
+    $this->team = Game::get();
+    $this->_team = Gamestatut::get();
+    $this->mess = Msg::get();
+    $this->user = User::get();
+    $this->n = 0;
+    $this->e = 0;
+    foreach ($this->team as $key) {
+      if ($key->auth_id == Auth::user()->id && $key->status == "true") {
+        $this->n++;
+      }
+    }
+    foreach ($this->_team as $keys) {
+      if ($keys->user_id == Auth::user()->id && $keys->activate == "true") {
+        $this->e++;
+      }
+    }
+  }
+
   public function render()
   {
-    $n = 0;
-    $gamestat = Gamestatut::get();
-    $user = User::get();
-    $auth_id = Auth::user()->id;
-    $game = Game::get()->where('status', 'true');
-    $sms = Msg::get();
 
-    return view('livewire.sms.message', compact('sms', 'game', 'auth_id', 'user'));
+
+    return view('livewire.sms.message');
   }
 
   public function texto(): void
   {
-    $this->stat = Gamestatut::get();
-    $this->jeu = Game::get()->where('status', 'true');
+    $this->team = Game::get()->where('status', 'true');
+    $this->team_accepte = Gamestatut::get()->where('activate', 'true');
 
-    foreach ($this->stat as $key) {
-      foreach ($this->jeu as $keys) {
-        if ($key->id == $keys->team_id && $keys->user_id == Auth::user()->id) {
-          $team_id = $keys->team_id;
-        } elseif ($key->auth_id == Auth::user()->id) {
-          $team_id = $keys->team_id;
-        }
+    foreach ($this->team as $key) {
+      if ($key->auth_id == Auth::user()->id) {
+        $this->id_team = $key->id;
       }
     }
-    $this->validate([
-      'text' => 'required'
-    ]);
+
+    foreach ($this->team_accepte as $keys) {
+      if ($keys->user_id == Auth::user()->id) {
+        $this->id_team = $keys->team_id;
+      }
+    }
 
     Msg::create([
-      'team_id' => $team_id,
-      'auth_id' => Auth::user()->id,
-      'message' => $this->text
+      'message' => $this->text,
+      'team_id' => $this->id_team,
+      'auth_id' => Auth::user()->id
     ]);
 
     $this->redirect('/team/message', navigate: true);
