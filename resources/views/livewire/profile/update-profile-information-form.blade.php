@@ -7,11 +7,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
+use Livewire\WithFileUploads;
 
 new class extends Component
 {
     public string $name = '';
     public string $email = '';
+    public $file;
+    public $avatar;
+
+    use WithFileUploads;
 
     /**
      * Mount the component.
@@ -27,14 +32,27 @@ new class extends Component
      */
     public function updateProfileInformation(): void
     {
+
         $user = Auth::user();
 
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
         ]);
-
-        $user->fill($validated);
+        if (empty($this->avatar)) {
+            $path = Auth::user()->avatar;
+        } else {
+            $this->validate([
+                'avatar' => 'image|max:2048',
+            ]);
+            $this->avatar->store('public');
+            $path = $this->avatar->store();
+        }
+        $user->fill([
+            'name' => $this->name,
+            'email' => $this->email,
+            'avatar' => $path
+        ]);
         DB::update('UPDATE `gamestatuts` SET `email` ="' . $this->email . '" WHERE `user_id`="' . Auth::user()->id . '"');
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
@@ -77,7 +95,30 @@ new class extends Component
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <div>
+<<<<<<< HEAD
             <x-input-label for="name" :value="__('Name')" id="value_name"/>
+=======
+            <center>
+                <label for="file">
+                    @if($avatar)
+                    <img src="{{$avatar->temporaryUrl() }}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm">
+                    @else
+                    @if(strlen(Auth::user()->avatar) == 1)
+                    <h1 style="background-color:black;color:white;border-radius:50%;font-size:250%;width:2cm;height:2cm">
+                        {{Auth::user()->avatar}}
+                    </h1>
+                    @else
+                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" width="100cm" style="border-radius: 50%;height:2.5cm" alt="">
+                    @endif
+                    @endif
+                </label>
+            </center>
+            <input type="file" name="file" wire:model="avatar" id="file" hidden>
+
+        </div>
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+>>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>

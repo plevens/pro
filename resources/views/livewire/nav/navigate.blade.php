@@ -12,6 +12,7 @@ new class extends Component
 ?>
 
 <div wire:poll.5s>
+
     <x-drop>
         <x-slot name="triggers">
             @if($n >= 1)
@@ -24,8 +25,8 @@ new class extends Component
             @php
             $i++;
             @endphp
-            <b style="cursor: pointer;background-color:skyblue;border-radius:20px">
-                <b style="border-style:solid;color:green;padding:10px 10px;top:-1cm">&check;</b><b>{{$teams->nom}}</b>
+            <b class="btn btn-dark text-white">
+                <b style=" border-style:solid;color:green;padding:10px 10px;top:-1cm">&check;</b><b>{{$teams->nom}}</b>
 
                 @if(strlen($teams->icon) > 1)
                 &nbsp;
@@ -48,7 +49,7 @@ new class extends Component
             @php
             $i++;
             @endphp
-            <b style="cursor: pointer;background-color:skyblue;border-radius:20px">
+            <b class="btn btn-dark text-white">
                 <b style="border-style:solid;color:green;padding:10px 10px;top:-1cm">&check;</b><b>{{$__teams->nom}}</b>
 
                 @if(strlen($__teams->icon) > 1)
@@ -65,16 +66,16 @@ new class extends Component
             @endforeach
 
             @if($i == 0)
-            <b style="cursor: pointer;display: inline-block;">Team</b>
+            <b class="btn btn-dark text-white">Team</b>
             @endif
             @else
-            <b style="cursor: pointer;display: inline-block;">
+            <b class="btn btn-dark text-white">
                 Team
             </b>
             @endif
         </x-slot>
-        <x-slot  name="contents">
-            <x-dropdown-link :href="route('addTeam')" wire:navigate>
+        <x-slot name="contents">
+            <x-dropdown-link :href="route('addTeam')" style="text-decoration: none" wire:navigate>
                 {{ __('Creer un team') }}
             </x-dropdown-link>
             <x-dropdown-link :href="route('setup')" wire:navigate>
@@ -110,7 +111,28 @@ new class extends Component
                     @endforeach
             </ul>
             <!-- team accepter non activer  -->
+
             <ul>
+                @php
+                $p = 0;
+                @endphp
+                @foreach($team_invitate as $_teams)
+                @foreach($team as $teams)
+                @if($teams->id == $_teams->team_id && $_teams->activate == 'false' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")
+                @php
+                $p++;
+                @endphp
+                @endif
+                @endforeach
+                @endforeach
+
+
+                @if($p>= 1)
+                <b>Team accepter</b>
+                @endif
+                <hr>
+
+
                 @foreach($team_invitate as $_teams)
                 @foreach($team as $teams)
                 @if($teams->id == $_teams->team_id && $_teams->activate == 'false' && $_teams->user_id == Auth::user()->id && $_teams->accepted == "true")

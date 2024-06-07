@@ -25,6 +25,12 @@ new class extends Component
     @if($p == 0)
 
     @else
-    {{$p}}
+    <b style="background-color:red;padding:1px 5px ; border-radius:50%;margin-left:-15px;font-size:10px;color:white">
+        @if($p > 9)
+        +9
+        @else
+        {{$p}}
+        @endif
+    </b>
     @endif
 </div>

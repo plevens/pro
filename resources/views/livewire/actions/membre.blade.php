@@ -12,16 +12,16 @@ new class extends Component
 <div wire:poll.5s>
     <center>
         @if(session('msg'))
-        <b class="bg-warning text-white easy-in-out">! Vous avez supprimer un utilisateur du groupe</b>
+        <b class="bg-warning text-white easy-out col h-3">! Vous avez supprimer un utilisateur du groupe</b>
         @endif
         <br>
         @foreach($team as $key)
         @if($key->auth_id == Auth::user()->id)
         Membre du groupe ({{$key->membre}})
         <br>
-        <a href="{{route('membre.sup')}}">Ajouter un membre</a>
+        <a href="{{route('membre.sup')}}" class="btn btn-primary"><img src="{{asset('icons/person-plus.svg')}}" alt="" srcset=""></a>
 
-        <table cellpadding="10%" class="table w-6 border-2" style="text-align:center">
+        <table cellpadding="5%" class="table w-2" style="text-align:center">
             <tr class="">
                 <td>
 
@@ -30,13 +30,13 @@ new class extends Component
                     Pseudo
                 </td>
                 <td>
-                    Email
-                </td>
-                <td>
                     Role
                 </td>
                 <td>
                     date d'entrer
+                </td>
+                <td>
+                    date du demande
                 </td>
                 <td>
                     Menu
@@ -53,6 +53,9 @@ new class extends Component
             @php
             $date = strtotime($_membre->updated_at);
             $format = date('d/m/Y',$date);
+
+            $dates = strtotime($_membre->created_at);
+            $formats = date('d/m/Y',$dates);
             @endphp
             @if($users->id == $_membre->user_id)
             <tr>
@@ -71,40 +74,36 @@ new class extends Component
 
                 </td>
                 <td>
-
-                    {{$_membre->email}}
-
-
-                </td>
-                <td>
                     {{$_membre->role}}
                 </td>
                 <td>
                     {{$format}}
                 </td>
                 <td>
+                    {{$formats}}
+                </td>
+                <td>
+                    <b style="display:inline-block">
+                        <a href="">
+                            &nbsp;
+                            <input type="image" src="{{asset('icons/pen.svg')}}" alt="" srcset="">
+                        </a>
 
-                    <a href="" class="btn btn-dark">
-                        Modif
-                    </a>
-                    <br>
-                    @if($_membre->activate != 'bloque')
-                    <a href="{{route('bloc.member',['id'=>$_membre->id])}}" wire:navigate class="btn btn-light" style="border-color:red;border-style:solid;border-radius:4em">
-                        <b style="border-style:solid;border:1;color:red;">
-                            -
-                        </b>
-                    </a>
-                    @else
-                    <a href="{{route('debloc.member',['id'=>$_membre->id])}}" wire:navigate class="btn btn-warning">
-                        +
-                    </a>
-                    @endif
-                    <a href="{{route('delete.member',['id'=>$_membre->id])}}" class="btn btn-danger" style="border-color:red;border-style:solid;border-radius:4em">
+                        @if($_membre->activate != 'bloque')
+                        <a href="{{route('bloc.member',['id'=>$_membre->id])}}" wire:navigate>
 
-                        &Cross;
+                            <input type="image" src="{{asset('icons/person-slash.svg')}}" alt="" srcset="">
 
-                    </a>
-
+                        </a>
+                        @else
+                        <a href="{{route('debloc.member',['id'=>$_membre->id])}}" wire:navigate>
+                            <input type="image" src="{{asset('icons/person-slash1.svg')}}" alt="" srcset="">
+                        </a>
+                        @endif
+                        <a href="{{route('delete.member',['id'=>$_membre->id])}}">
+                            <input type="image" src="{{asset('icons/trash.svg')}}" alt="" srcset="">
+                        </a>
+                    </b>
                 </td>
 
             </tr>
@@ -144,13 +143,13 @@ new class extends Component
                     Pseudo
                 </td>
                 <td>
-                    Email
-                </td>
-                <td>
                     Role
                 </td>
                 <td>
                     date d'entrer
+                </td>
+                <td>
+                    date du demande
                 </td>
                 <td>
                     Menu
@@ -162,6 +161,9 @@ new class extends Component
             @php
             $date = strtotime($members->updated_at);
             $format = date('d/m/Y',$date);
+
+            $dates = strtotime($members->created_at);
+            $formats = date('d/m/Y',$dates);
             @endphp
 
             <tr>
@@ -177,13 +179,13 @@ new class extends Component
                     {{$members->pseudo}}
                 </td>
                 <td>
-                    {{$members->email}}
-                </td>
-                <td>
                     {{$members->role}}
                 </td>
                 <td>
                     {{$format}}
+                </td>
+                <td>
+                    {{$formats}}
                 </td>
                 @if($members->user_id == Auth::user()->id)
                 <td>

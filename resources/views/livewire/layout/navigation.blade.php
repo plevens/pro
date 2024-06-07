@@ -16,7 +16,11 @@ new class extends Component
     }
 }; ?>
 
+<<<<<<< HEAD
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100" id="navigation_links">
+=======
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 fixed-top">
+>>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -29,15 +33,28 @@ new class extends Component
                 </div>
 
                 <!-- Navigation Links -->
+<<<<<<< HEAD
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"id="navigation">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate id="dashboard">
                         {{ __('Accueil') }}
                     </x-nav-link>
                     <x-nav-link :href="route('notification')" :active="request()->routeIs('notification')" wire:navigate id="dashboard">
                         {{ __('Notification') }}
+=======
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                        <input type="image" src="{{asset('icons/house-fill.svg')}}" style="width:1cm" alt="">
+                    </x-nav-link>
+                    <x-nav-link :href="route('notification')" :active="request()->routeIs('notification')" wire:navigate>
+                        <input type="image" src="{{asset('icons/bell.svg')}}" style="width:1cm" alt="">
+
+>>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
                         <sup>
                             @livewire('notification.pop-notif')
                         </sup>
+                    </x-nav-link>
+                    <x-nav-link :href="route('jeuPerso')" :active="request()->routeIs('jeuPerso')" wire:navigate>
+                        <input type="image" src="{{asset('icons/controller.svg')}}" style="width:1cm" alt="">
                     </x-nav-link>
 
                 </div>
@@ -56,15 +73,9 @@ new class extends Component
                 &nbsp;
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
+                        <b class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150" style="cursor: pointer;">
+                            <img src="{{asset('storage/'.Auth::user()->avatar)}}" width="40cm" style="border-radius:50%;height:1cm" alt="" srcset="">
+                        </b>
                     </x-slot>
 
                     <x-slot name="content">

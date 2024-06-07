@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Friend\Friend;
+use App\Livewire\Match\JeuPerso;
 use App\Livewire\Nav\Navigate;
 use App\Livewire\Notification\Notification;
 use App\Livewire\Team\DeleteGame;
@@ -81,7 +83,7 @@ Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');
 
-// Jeux root 
+// Jeux team root 
 Route::view('/team/game', 'jeux')
     ->middleware(['auth', 'verified'])
     ->name('gameTeam');
@@ -94,21 +96,33 @@ Route::view('/jeu/bloquer', 'jeubloquer')
     ->middleware(['auth', 'verified'])
     ->name('blockjeu');
 
-Route::get('/supprimer/jeux{id}' , [Macth::class, 'suppression'])
+Route::get('/supprimer/jeux{id}', [Macth::class, 'suppression'])
     ->middleware(['auth', 'verified'])
     ->name('supprimeJeu');
 
-Route::get('/deletejeu{id}' , [Macth::class, 'suppdefinitive'])
+Route::get('/deletejeu{id}', [Macth::class, 'suppdefinitive'])
     ->middleware(['auth', 'verified'])
     ->name('deletejeu');
 
-Route::get('/restaurejeu{id}' , [Macth::class, 'restaurejeu'])
+Route::get('/restaurejeu{id}', [Macth::class, 'restaurejeu'])
     ->middleware(['auth', 'verified'])
     ->name('restaurejeu');
 
-    
+// Jeu perso 
 
-    
+Route::view('/parametre/jeu personnel', 'jeu_perso')
+    ->middleware(['auth', 'verified'])
+    ->name('jeuPerso');
+
+Route::get('/ajouter/jeu personnel', [JeuPerso::class, 'jeux'])
+    ->middleware(['auth', 'verified'])
+    ->name('addjeuPerso');
+
+
+
+
+
+
 
 // Message root 
 
