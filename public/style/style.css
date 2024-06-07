@@ -196,8 +196,8 @@ nav{
 /* navigation principal */
 #nav{
     background-color:#04205c ;
-    height: 70px;
-    width: auto;
+    height: auto;
+    width: 100%;
     margin-top: 0;
 }
 #dashboard{
@@ -262,21 +262,21 @@ nav{
 
 /* profil */
 #color{
-    background-color: gainsboro;
+    background-color: red;
 }
 #profile_information{
     color: orange;
     margin: 0cm 2cm 0cm;
     font-family: Georgia;
 }
-#value_name{
+#label_name{
     color: blue;
 }
 #name{
     border-radius: 5px;
     background-color: #f1f1f1;
 }
-#value_email{
+#label_email{
     color: blue;
 }
 #email{
