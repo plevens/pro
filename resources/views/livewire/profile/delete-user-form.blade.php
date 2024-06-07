@@ -28,11 +28,11 @@ new class extends Component
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900"id="delete_account">
-            {{ __('Delete Account') }}
+            {{ __('Supprimer le compte') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600"id="texte">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+            {{ __('Une fois votre compte supprimé, toutes ses ressources est ses données seront définitivement cette la supprimée. Avant votre compte,veiilller télécharge.') }}
         </p>
     </header>
 
@@ -59,11 +59,11 @@ new class extends Component
 
             <div class="mt-6 flex justify-end">
                 <x-secondary-button id="boutton_cancel" x-on:click="$dispatch('close')">
-                    {{ __('Cancel') }}
+                    {{ __('Annuler') }}
                 </x-secondary-button>
 
                 <x-danger-button id="boutton_delete_account" class="ms-3">
-                    {{ __('Delete Account') }}
+                    {{ __('Supprimer le compte') }}
                 </x-danger-button>
             </div>
         </form>

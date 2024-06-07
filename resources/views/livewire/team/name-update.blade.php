@@ -13,7 +13,7 @@ new class extends Component
 <div>
     <center>
         @if($p == 1)
-        <h2>Modifier le nom du groupe</h2>
+        <h2 id="Modifier-le-nom-du-groupe">Modifier le nom du groupe</h2>
         <br>
         <form wire:submit="updateName" enctype="multipart/form-data">
             <label for="img" style="border-radius:50%">
@@ -30,7 +30,7 @@ new class extends Component
             </label>
             <br>
             <input type="file" wire:model="img" name="file" id="img" hidden>
-            <input type="text" wire:model="nom" name="name" value="{{$nom}}" id="">
+            <input type="text" wire:model="nom" name="name" value="{{$nom}}" id="input-modifier">
             <input type="hidden" name="id" wire:model="id" value="{{$id}}" id="">
             <br>
             <br>
