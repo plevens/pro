@@ -1,12 +1,7 @@
   <x-app-layout>
       <x-slot name="header">
-<<<<<<< HEAD
-          <h2 class="font-semibold text-xl text-gray-800 leading-tight"id="titre">
-              {{ __('Creer mon jeu') }}
-=======
           <h2 class="font-semibold text-xl text-gray-800 leading-tight">
               {{ __('Ajouter mon jeu') }}
->>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
           </h2>
       </x-slot>
       @livewire('team.dash')

@@ -16,11 +16,7 @@ new class extends Component
     }
 }; ?>
 
-<<<<<<< HEAD
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" id="navigation_links">
-=======
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 fixed-top">
->>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -33,14 +29,6 @@ new class extends Component
                 </div>
 
                 <!-- Navigation Links -->
-<<<<<<< HEAD
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"id="navigation">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate id="dashboard">
-                        {{ __('Accueil') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('notification')" :active="request()->routeIs('notification')" wire:navigate id="dashboard">
-                        {{ __('Notification') }}
-=======
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         <input type="image" src="{{asset('icons/house-fill.svg')}}" style="width:1cm" alt="">
@@ -48,7 +36,6 @@ new class extends Component
                     <x-nav-link :href="route('notification')" :active="request()->routeIs('notification')" wire:navigate>
                         <input type="image" src="{{asset('icons/bell.svg')}}" style="width:1cm" alt="">
 
->>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
                         <sup>
                             @livewire('notification.pop-notif')
                         </sup>

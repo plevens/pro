@@ -19,21 +19,12 @@ new class extends Component
             <br>
             <a href="{{route('gameTeam')}}" wire:navigate><img src="{{asset('icons/controller.svg')}}" alt="" srcset=""></a>
             <br>
-<<<<<<< HEAD
-            <a href="{{route('smsTeam')}}" wire:navigate>Messages</a>
-            <br><br>
-            <a href="{{route('supprime.game',['id'=>$gamers->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
-                <x-danger-button id="Supprimer">
-                    Supprimer
-                </x-danger-button>
-=======
             <a href="{{route('smsTeam')}}" wire:navigate><img src="{{asset('icons/chat.svg')}}" alt="" srcset=""></a>
             <br>
             <a href="{{route('supprime.game',['id'=>$gamers->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
 
                 <img src="{{asset('icons/trash.svg')}}" alt="" srcset="">
 
->>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
             </a>
         </div>
     </div>

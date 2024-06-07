@@ -95,9 +95,6 @@ new class extends Component
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <div>
-<<<<<<< HEAD
-            <x-input-label for="name" :value="__('Name')" id="value_name"/>
-=======
             <center>
                 <label for="file">
                     @if($avatar)
@@ -118,7 +115,6 @@ new class extends Component
         </div>
         <div>
             <x-input-label for="name" :value="__('Name')" />
->>>>>>> e73ad1f864b1e162e616a86a594770e80cfaa56b
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
