@@ -1,17 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-<<<<<<< HEAD
         <h2 class="font-semibold text-xl  leading-tight">
-=======
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight"id="titre">
->>>>>>> e4928a94e7528b950fd520d57c0a8a8b85099b2a
             {{ __('Profile') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-<<<<<<< HEAD
 
             <div class="shadow navbar-text">
                 <center>
@@ -25,30 +20,18 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg" id="profiles" hidden>
                 <div class="max-w-xl">
 
-=======
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg" id="color" >
-                <div class="max-w-xl " >
->>>>>>> e4928a94e7528b950fd520d57c0a8a8b85099b2a
                     <livewire:profile.update-profile-information-form />
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg" id="pswrd" hidden>
-=======
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg" id="black">
->>>>>>> e4928a94e7528b950fd520d57c0a8a8b85099b2a
                 <div class="max-w-xl">
                     <livewire:profile.update-password-form />
                     <progress id="pg"></progress>
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg" id="deletes" hidden>
-=======
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg"id="color">
->>>>>>> e4928a94e7528b950fd520d57c0a8a8b85099b2a
                 <div class="max-w-xl">
                     <livewire:profile.delete-user-form />
                 </div>
