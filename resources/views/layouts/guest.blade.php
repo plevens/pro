@@ -9,10 +9,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{asset('styles/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('styles/style.css')}}">
-    <script src="{{asset('app/bootstrap.bundle.js')}}"></script>
-    <script src="{{asset('app/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('boot/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('boot/css-ui.css')}}">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

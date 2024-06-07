@@ -10,8 +10,8 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('style/style.css')}}">
-    <link rel="stylesheet" href="{{asset('build/assets/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('build/assets/css-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('boot/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('boot/css-ui.css')}}">
 
 
     <!-- Scripts -->

@@ -36,6 +36,9 @@ new class extends Component
                     date d'entrer
                 </td>
                 <td>
+                    date du demande
+                </td>
+                <td>
                     Menu
                 </td>
             </tr>
@@ -50,6 +53,9 @@ new class extends Component
             @php
             $date = strtotime($_membre->updated_at);
             $format = date('d/m/Y',$date);
+
+            $dates = strtotime($_membre->created_at);
+            $formats = date('d/m/Y',$dates);
             @endphp
             @if($users->id == $_membre->user_id)
             <tr>
@@ -72,6 +78,9 @@ new class extends Component
                 </td>
                 <td>
                     {{$format}}
+                </td>
+                <td>
+                    {{$formats}}
                 </td>
                 <td>
                     <b style="display:inline-block">
@@ -140,6 +149,9 @@ new class extends Component
                     date d'entrer
                 </td>
                 <td>
+                    date du demande
+                </td>
+                <td>
                     Menu
                 </td>
             </tr>
@@ -149,6 +161,9 @@ new class extends Component
             @php
             $date = strtotime($members->updated_at);
             $format = date('d/m/Y',$date);
+
+            $dates = strtotime($members->created_at);
+            $formats = date('d/m/Y',$dates);
             @endphp
 
             <tr>
@@ -168,6 +183,9 @@ new class extends Component
                 </td>
                 <td>
                     {{$format}}
+                </td>
+                <td>
+                    {{$formats}}
                 </td>
                 @if($members->user_id == Auth::user()->id)
                 <td>
