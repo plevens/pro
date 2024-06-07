@@ -32,7 +32,7 @@
         @endif
 
         <!-- Page Content -->
-        <main style="margin-top:-1cm">
+        <main style="margin-top:-1cm;">
             {{ $slot }}
         </main>
     </div>
