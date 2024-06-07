@@ -1,8 +1,14 @@
+
 /* Ajouter une team  */
 
 #titre{
     color: #d3a202;
-    margin: 13px 130px 13px ;
+    margin: 0px 0px ;
+    font-family: Georgia;
+}
+#ajouter{
+    color:  rgb(15, 126, 217) ;
+    font-family: Georgia;
 }
 #button-ajouter{
     background-color: #04205c;
@@ -17,12 +23,28 @@
     border: 1px solid #d3a202;
     border-radius: 5px;
 }
-#Ajouter_votre_groupe{
-   border-radius: 5px;
-   margin: 30px 50px 0px ;
+#input-ajouter{
+    background-color:#f1f1f1;
+    border-radius: 5px;
 }
 
-#Enre{
+
+/* cree un team */
+#creer_votre_groupe{
+   color: rgb(15, 126, 217);
+   margin: 0px 50px 15px ;
+   font-family: Georgia;
+}
+#photo_du_groupe{
+    color: rgb(15, 126, 217);
+    font-family: Georgia;
+}
+#photo_du_groupe:hover{
+    color: #04205c;
+    font-weight: bolder;
+}
+
+#boutton-enregistrer{
    
     background-color: #04205c;
     color:#d3a202;
@@ -32,25 +54,28 @@
     border-radius: 5px;
     margin: 30px 50px 0px ;
 }       
-#Enre:hover{
+#boutton-enregistrer:hover{
     background-color: #f1f1f1;
     color: #04205c;
     font-weight: bolder;
     border: 1px solid #d3a202;
     border-radius: 5px;
 }
-.tof{
-    color: rgb(15, 126, 217);
-    margin: 30px 50px 10px ;
-}
 
 
 /* Parametre du team*/
-#Parametre_du_team{
-    color:#d3a202;
-    margin: 13px 130px 13px ;
+
+#Modifier-le-nom-du-groupe{
+    color:rgb(15, 126, 217) ;
+    font-family: Georgia;
 }
-#mod{
+
+#input-modifier{
+    border-radius: 5px;
+    margin: 10px 0px 0px ;
+    background-color: #f1f1f1;
+}
+#boutton-modifier{
     background-color: #04205c;
     color:#d3a202;
     height:30px;
@@ -58,24 +83,20 @@
     font-weight: bolder;
     border-radius: 5px;
     margin: 5px 0px 0px ;
+    font-family: Georgia;
 }
-#mod:hover{
+#boutton-modifier:hover{
     background-color: #f1f1f1;
     color: #04205c;
     font-weight: bolder;
     border: 1px solid #d3a202;
     border-radius: 5px;
-}
-#Modifier{
-    color:rgb(15, 126, 217) ;
-}
-#Modifier_le_nom{
-    border-radius: 5px;
+    font-family: Georgia;
 }
 
-
-#Ajouter_un_membre{
+#ajouter_un_membre{
     color:rgb(15, 126, 217) ;
+    font-family: Georgia;
 }
 #button-ajouter{
     background-color:#04205c ;
@@ -84,21 +105,32 @@
     width: 100px;
     font-weight: bolder;
     border-radius: 5px;
+    font-family: Georgia;
 }
 #email{
     border-radius: 5px;
+    font-family: Georgia;
 }
-
-#Suppression_du_jeux{
+#input_jouter_un_membre{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+#ajouter_un_membre{
     color:rgb(15, 126, 217) ;
+    font-family: Georgia;
+}
+#suppression_du_membre{
+    color:rgb(15, 126, 217) ;
+    font-family: Georgia;
 }
 #Supprimer{
     background-color: red;
     color:#d3a202;
-    height:30px;
-    width: 100px;
+    height:35px;
+    width: 120px;
     font-weight: bolder;
     border-radius: 5px;
+    font-family: Georgia;
 }
 #Supprimer:hover{
     background-color: #f1f1f1;
@@ -106,6 +138,9 @@
     font-weight: bolder;
     border: 1px solid #d3a202;
     border-radius: 5px;
+    font-family: Georgia;
+    width: 120px;
+    height:35px;
 }
 
 
@@ -113,38 +148,234 @@
 #Mon_team{
     color: #d3a202;
     margin: 13px 130px 13px ;
+    font-family: Georgia;
 }
 #Team_creer{
     color:rgb(15, 126, 217) ;
+    font-family: Georgia;
 }
 #Membre{
     color:rgb(15, 126, 217) ;
+    font-family: Georgia;
 }
 #header{
     background-color: rgb(210, 210, 210);
+    font-family: Georgia;
 }
 
 
 /* Voir tout les teams */
 #team{
     color:rgb(15, 126, 217);
+    font-family: Georgia;
 }
 #Team{
     color: #d3a202;
     margin: 13px 130px 13px ;
+    font-family: Georgia;
 }
 nav{
     background-color:#04205c ;
 }
 .table{
-    background-color:LightGray;
+    background-color:Gray;
 }
 #td{
     color:#f1f1f1;
+    font-family: Georgia;
+    font-weight: bolder;
 }
 #td2{
     color: black;
 }
 .tr{
     background-color:#d3a202 ;
+}
+
+
+/* navigation principal */
+#nav{
+    background-color:#04205c ;
+    height: auto;
+    width: 100%;
+    margin-top: 0;
+}
+#dashboard{
+    color: red;
+    font-family: Georgia;
+}
+#navigation_links{
+    background-color:#ccccff;
+}
+
+/* creer mon jeu */
+/* jeux */
+#input_nom_de_votre_jeu{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+#textarea_description_jeu{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+#lien_voir_mon_jeu{
+    color:black
+    font-weight bolder;
+    font-family: Georgia;
+    text-decoration: underline;
+}
+#lien_voir_mon_jeu:hover{
+    color:  #04205c;
+    font-weight: bolder;
+    font-family: Georgia;
+}
+#boutton_ajouter_votre_jeu{
+    background-color: #04205c;
+    color:#d3a202;
+    height:30px;
+    width: 150px;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin: 5px 0px 0px ;
+    font-family: Georgia;
+}
+#boutton_ajouter_votre_jeu:hover{
+    background-color: #f1f1f1;
+    color: e#04205c;
+    font-weight: bolder;
+    border: 1px solid #d3a202;
+    border-radius: 5px;
+    width: 150px;
+}
+#lien_jeu_bloquer{ 
+    color:black
+    font-weight bolder;
+    font-family: Georgia;
+    text-decoration: underline;
+}
+
+#lien_jeu_bloquer:hover{
+    color:  #04205c;
+    font-weight: bolder;
+}
+
+
+/* profil */
+#color{
+    background-color: red;
+}
+#profile_information{
+    color: orange;
+    margin: 0cm 2cm 0cm;
+    font-family: Georgia;
+}
+#label_name{
+    color: blue;
+}
+#name{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+#label_email{
+    color: blue;
+}
+#email{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+#saved{
+    background-color: #04205c;
+    color:#d3a202;
+    height:35px;
+    width: 80px;
+    font-weight: bolder;
+    border-radius: 5px;
+    margin: 5px 0px 0px ;
+    font-family: Georgia;
+}
+#saved:hover{
+    background-color: #f1f1f1;
+    color: e#04205c;
+    font-weight: bolder;
+    border: 1px solid #d3a202;
+    border-radius: 5px;
+    
+}
+
+#update_password{
+    color: orange;
+    margin: 0cm 2cm 0cm;
+    font-family: Georgia;
+}
+#input_password{
+    color: blue;
+}
+#update_password_current_password{
+    background-color: #f1f1f1;
+    color: red;
+}
+#update_password_password{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+
+#update_password_password_confirmation{
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+
+#delete_account{
+    color: orange;
+    margin: 0cm 2cm 0cm;
+    font-family: Georgia;
+}
+#texte{
+    color: black;
+    font-family: Georgia;
+}
+#boutton_delete_account{
+    background-color: red;
+    color:#d3a202;
+    height:30px;
+    width: 180px;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-family: Georgia;
+    margin: 20px 4px 6px;
+}
+#boutton_delete_account:hover{
+    background-color: #f1f1f1;
+    color: red;
+    font-weight: bolder;
+    border: 1px solid #d3a202;
+    border-radius: 5px;
+
+}
+#boutton_cancel{
+    background-color: blue;
+    color:#d3a202;
+    height:30px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 5px 0px 0px ;
+    font-weight: bolder;
+    font-family: Georgia;
+    margin: 20px 4px 6px;
+}
+#boutton_cancel:hover{
+        background-color: #f1f1f1;
+        color: blue;
+        font-weight: bolder;
+        border: 1px solid #d3a202;
+        border-radius: 5px;
+}
+#password{
+    border-radius: 5px;
+    background-color:  #f1f1f1;
+}
+#form_delete_account{
+    background-color: #f1f1f1;
+}
+#form_profile_informatin{
+    background-color:  black;
 }

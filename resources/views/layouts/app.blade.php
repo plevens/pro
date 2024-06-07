@@ -25,7 +25,11 @@
         <livewire:layout.navigation />
         <!-- Page Heading -->
         @if (isset($header))
+<<<<<<< HEAD
         <header class="bg-dark text-white shadow" style="margin-top:1.72cm">
+=======
+        <header class=" shadow" style="margin-top:1.72cm" id="nav">
+>>>>>>> e4928a94e7528b950fd520d57c0a8a8b85099b2a
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>

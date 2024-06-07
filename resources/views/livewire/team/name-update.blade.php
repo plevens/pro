@@ -34,7 +34,7 @@ new class extends Component
             <input type="hidden" name="id" wire:model="id" value="{{$id}}" id="">
             <br>
             <br>
-            <button id="mod">Modifier</button>
+            <button id="boutton-modifier">Modifier</button>
         </form>
         @endif
 

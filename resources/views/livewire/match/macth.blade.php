@@ -21,7 +21,7 @@ new class extends Component
     @endif
     <br>
     <form wire:submit="startGame" enctype="multipart/form-data">
-        <input wire:model="nom" type="text" name="" id="" placeholder="Nom de votre jeu">
+        <input wire:model="nom" type="text" name="" id="input_nom_de_votre_jeu" placeholder="Nom de votre jeu">
         <x-input-error :messages="$errors->get('nom')" class="mt-2" />
         <br><br>
         <label for="icon">
@@ -40,7 +40,7 @@ new class extends Component
         <textarea wire:model="description" placeholder="Description du jeu" name="" id="" cols="20" rows="3"></textarea>
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
         <br><br>
-        <button>
+        <button id="boutton_ajouter_votre_jeu">
             Ajouter votre jeu
         </button>
     </form>

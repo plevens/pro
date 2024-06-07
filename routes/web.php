@@ -156,7 +156,7 @@ Route::get('/delete/member/{id}', [DeleteGame::class, 'suppressions'])
     ->middleware(['auth', 'verified'])
     ->name('delete.member');
 
-// ajouter un membre supplementaire 
+// supplementaire 
 
 Route::view('/ajouter/membre', 'membre_sup')
     ->middleware(['auth', 'verified'])
