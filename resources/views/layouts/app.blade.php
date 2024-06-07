@@ -16,6 +16,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="{{asset('boot/jquery.js')}}"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -24,7 +25,7 @@
         <livewire:layout.navigation />
         <!-- Page Heading -->
         @if (isset($header))
-        <header class="bg-white shadow" style="margin-top:1.72cm">
+        <header class="bg-dark text-white shadow" style="margin-top:1.72cm">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
