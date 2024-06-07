@@ -15,7 +15,9 @@ new class extends Component
 
         @foreach($game as $games)
         @if($games->auth_id == Auth::user()->id)
-        <h2>Modifier le nom du groupe</h2>
+        <h2 id="Modifier-le-nom-du-groupe">
+            Modifier le nom du groupe
+        </h2>
         <br>
         <form action="{{route('update.name',['id'=>$games->id])}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -28,18 +30,20 @@ new class extends Component
             @endif
             <input type="file" name="file" id="img" hidden>
             <input type="text" name="image" value="{{$games->icon}}" hidden>
-            <input type="text" name="name" value="{{$games->nom}}" id="">
+            <input type="text" name="name" value="{{$games->nom}}" id="input-modifier">
             <input type="hidden" name="id" value="{{$games->id}}" id="">
             <br>
             <br>
-            <button id="mod">Modifier</button>
+            <button id="boutton-modifier">Modifier</button>
         </form>
         @endif
         @endforeach
 
         @foreach($_game as $_games)
         @if($_games->user_id == Auth::user()->id)
-        <h2>Modifier Votre profil</h2>
+        <h2>
+            Modifier Votre profil
+        </h2>
         <br>
         <form action="{{route('update.utilisateur',['id'=>$_games->id])}}" method="post" enctype="multipart/form-data">
             @csrf

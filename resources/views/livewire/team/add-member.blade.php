@@ -11,11 +11,11 @@ new class extends Component
 ?>
 
 
-<div>
+<div >
     <center>
         @foreach($game as $games)
         @if($games->auth_id == Auth::user()->id)
-        <h2>
+        <h2 id="ajouter_un_membre">
             Ajouter un membre
         </h2>
         <br>
@@ -29,7 +29,7 @@ new class extends Component
         <h2>Nous avons envoyer une demande a l'utilisateur demander , merci.</h2>
         @endif
         <form wire:submit="addMember">
-            <input type="email" wire:model="email" placeholder="email de l'utilisateur" name="email" id="">
+            <input type="email" wire:model="email" placeholder="email de l'utilisateur" name="email" id="input_jouter_un_membre">
             <br>
             <br>
             <button id="button-ajouter">

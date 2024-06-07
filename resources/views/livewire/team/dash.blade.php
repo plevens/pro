@@ -20,9 +20,9 @@ new class extends Component
             <a href="{{route('gameTeam')}}" wire:navigate>Jeux</a>
             <br>
             <a href="{{route('smsTeam')}}" wire:navigate>Messages</a>
-            <br>
+            <br><br>
             <a href="{{route('supprime.game',['id'=>$gamers->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
-                <x-danger-button>
+                <x-danger-button id="Supprimer">
                     Supprimer
                 </x-danger-button>
             </a>
