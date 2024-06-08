@@ -47,17 +47,9 @@ new class extends Component
 
             @foreach($team as $key)
             @if($key->auth_id == Auth::user()->id)
-            @foreach($user as $users)
             @foreach($membres as $_membre)
-            @if($_membre->auth_id == Auth::user()->id && $key->id == $_membre->team_id)
-            @php
-            $date = strtotime($_membre->updated_at);
-            $format = date('d/m/Y',$date);
-
-            $dates = strtotime($_membre->created_at);
-            $formats = date('d/m/Y',$dates);
-            @endphp
-            @if($users->id == $_membre->user_id)
+            <!-- commence -->
+            @if(empty($_membre->user_id) && $_membre->accepted == 'waiting')
             <tr>
                 <td>
 
@@ -77,17 +69,62 @@ new class extends Component
                     {{$_membre->role}}
                 </td>
                 <td>
-                    {{$format}}
+                    en attente...
                 </td>
                 <td>
                     {{$formats}}
                 </td>
                 <td>
                     <b style="display:inline-block">
-                        <a href="">
-                            &nbsp;
-                            <input type="image" src="{{asset('icons/pen.svg')}}" alt="" srcset="">
+
+                        <a href="{{route('deletes.member',['id'=>$_membre->id])}}">
+                            <input type="image" src="{{asset('icons/trash.svg')}}" alt="" srcset="">
                         </a>
+                    </b>
+                </td>
+
+            </tr>
+            @endif
+
+            @foreach($user as $users)
+
+            @if($_membre->auth_id == Auth::user()->id && $key->id == $_membre->team_id )
+            @php
+            $date = strtotime($_membre->updated_at);
+            $format = date('d/m/Y',$date);
+
+            $dates = strtotime($_membre->created_at);
+            $formats = date('d/m/Y',$dates);
+            @endphp
+            @if($users->id == $_membre->user_id && $_membre->accepted == 'true')
+            <tr>
+                <td>
+
+                    @if(strlen($_membre->avatar) == 1)
+                    <b style="background-color:cadetblue;border-radius:2em;padding:20px 20px ;font-weight:bold;">{{$_membre->avatar}}</b>
+                    @else
+                    <input type="image" src="{{asset('storage/'.$_membre->avatar)}}" style="border-radius:4em" alt="" width="50cm" height="50cm">
+                    @endif
+                </td>
+                <td>
+
+                    {{$_membre->pseudo}}
+
+
+                </td>
+                <td>
+                    {{$_membre->role}}
+                </td>
+                <td>
+
+                    {{$_membre->updated_at->diffForHumans()}}
+                </td>
+                <td>
+
+                    {{$_membre->created_at->diffForHumans()}}
+                </td>
+                <td>
+                    <b style="display:inline-block">
 
                         @if($_membre->activate != 'bloque')
                         <a href="{{route('bloc.member',['id'=>$_membre->id])}}" wire:navigate>
@@ -108,6 +145,10 @@ new class extends Component
 
             </tr>
             @endif
+
+
+
+            <!-- termine -->
             @endif
             @endforeach
             @endforeach
@@ -182,14 +223,14 @@ new class extends Component
                     {{$members->role}}
                 </td>
                 <td>
-                    {{$format}}
+                    {{$members->updated_at->diffForHumans()}}
                 </td>
                 <td>
                     {{$formats}}
                 </td>
                 @if($members->user_id == Auth::user()->id)
                 <td>
-                    (Vous)
+                    <a href="{{route('avatar.pseudo')}}" wire:navigate> <input type="image" src="{{asset('icons/pen.svg')}}" alt="" srcset=""> </a>
                 </td>
                 @else
                 <td>
