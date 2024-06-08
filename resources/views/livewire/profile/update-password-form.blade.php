@@ -45,7 +45,7 @@ new class extends Component
         </h2>
 
         <p class="mt-1 text-sm text-gray-600" id="texte">
-            {{ __('Assurez-vous que votre compte utilise un long mot de passe aléatoire et restezom avant de sécuriser.') }}
+            {{ __('Assurez-vous que votre compte utilise un long mot de passe aléatoire et restera avant de sécuriser.') }}
         </p>
     </header>
 
@@ -57,7 +57,7 @@ new class extends Component
         </div>
 
         <div>
-            <x-input-label for="update_password_password" :value="__('Nouveau Mot de passe')" id="input_password"/>
+            <x-input-label for="update_password_password" :value="__('Nouveau mot de passe')" id="input_password"/>
             <x-text-input wire:model="password" id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>

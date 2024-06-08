@@ -85,11 +85,11 @@ new class extends Component
 <section >
     <header>
         <h2 class="text-lg font-medium text-gray-900"id="profile_information">
-            {{ __('Profile Information') }}
+            {{ __('Information sur le profil') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600" id="texte">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Mettez à jour les information de profil de votre compte et l'adresse e-mail.") }}
         </p>
     </header>
 
@@ -114,13 +114,13 @@ new class extends Component
 
         </div>
         <div>
-            <x-input-label for="name" :value="__('Name')" id="label_name"/>
+            <x-input-label for="name" :value="__('Nom')" id="label_name"/>
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" id="label_email"/>
+            <x-input-label for="email" :value="__('E-mail')" id="label_email"/>
             <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
@@ -144,7 +144,7 @@ new class extends Component
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button id="saved">{{ __('Save') }}</x-primary-button>
+            <x-primary-button id="saved">{{ __('Enregistrer') }}</x-primary-button>
 
             <x-action-message class="me-3" on="profile-updated">
                 {{ __('Saved.') }}

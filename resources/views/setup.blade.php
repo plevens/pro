@@ -9,8 +9,8 @@
 
         <div class="shadow navbar-text">
             <center>
-            <b class="btn btn-outline-primary col-3 " id="Modifier_click">Modifier le nom et le photo du groupe</b>
-            <b class="btn btn-outline-secondary col-3 " id="Ajouter_click">Ajouter un membre</b>
+            <b class="btn btn-outline-info col-3 " id="Modifier_click">Modifier le nom et le photo du groupe</b>
+            <b class="btn btn-outline-primary  col-3 " id="Ajouter_click">Ajouter un membre</b>
             <b class="btn btn-outline-danger col-3 " id="Suppression_click">Suppression du groupe</b>
 
             </center>
@@ -31,17 +31,17 @@
     <script>
         $("#Modifier_click").on('click', function() {
             $("#mng").fadeIn(1000).removeAttr('hidden');
-            $("#ajt").fadeOut(1000);
-            $("#spm").fadeOut(1000);
+            $("#ajt").hide();
+            $("#spm").hide();
         });
         $("#Ajouter_click").on('click', function() {
-            $("#mng").fadeOut(1000);
+            $("#mng").hide();
             $("#ajt").fadeIn(1000).removeAttr('hidden');
-            $("#spm").fadeOut(1000);
+            $("#spm").hide();
         });
         $("#Suppression_click").on('click', function() {
-            $("#ajt").fadeOut(1000);
-            $("#ajt").fadeOut(1000);
+            $("#mng").hide();
+            $("#ajt").hide();
             $("#spm").fadeIn(1000).removeAttr('hidden');
         });
     </script>
