@@ -13,7 +13,7 @@ new class extends Component
 <div wire:poll.5s>
     <center>
         <h1 id="team">
-            Groupe
+            Team
         </h1>
     </center>
     <br>
@@ -39,7 +39,7 @@ new class extends Component
                     Creer le
                 </td>
                 <td id="td">
-                    Statut
+                    status
                 </td>
                 <td>
 
