@@ -37,6 +37,16 @@ new class extends Component
             <td>
                 <a href="{{route('supprimeJeu',['id'=>$key->id])}}" wire:navigate>
                     <x-danger-button>
+                        Bloquer
+                    </x-danger-button>
+                </a>
+                <a href="{{route('modifierJeu',['id'=>$key->id])}}" wire:navigate>
+                    <x-danger-button>
+                        Modifier
+                    </x-danger-button>
+                </a>
+                <a href="{{route('deletejeu',['id'=>$key->id])}}" wire:navigate>
+                    <x-danger-button>
                         Supprimer
                     </x-danger-button>
                 </a>
@@ -51,7 +61,7 @@ new class extends Component
     @foreach($user as $used)
     @foreach($game as $keys)
     @if($used->id == $keys->auth_id && $keys->status == 'true' && $keys->auth_id == $auth_id)
-    {{$used->name}}
+    {{$used->name}}(Vous)
     @endif
     @endforeach
     @endforeach

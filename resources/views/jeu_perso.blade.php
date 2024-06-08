@@ -8,7 +8,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <livewire:match.jeu-perso />
+                    <div>
+                        <a href="{{route('addjeuPerso')}}" wire:navigate>
+                            Ajouter un jeu
+                        </a>
+                        <br>
+                        <a href="{{route('voirjeuPerso')}}" wire:navigate>
+                            Voir mon jeu
+                        </a>
+                        <br>
+                        <a href="{{route('bloqueJeuPerso')}}" wire:navigate>
+                            Jeu bloquer
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
