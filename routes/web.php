@@ -88,25 +88,38 @@ Route::view('/team/game', 'jeux')
     ->middleware(['auth', 'verified'])
     ->name('gameTeam');
 
-Route::view('/seen/game', 'seengame')
+Route::view('/seen/game/team', 'seengame')
     ->middleware(['auth', 'verified'])
     ->name('seengame');
 
-Route::view('/jeu/bloquer', 'jeubloquer')
+Route::view('/jeu/bloquer/team', 'jeubloquer')
     ->middleware(['auth', 'verified'])
     ->name('blockjeu');
 
-Route::get('/supprimer/jeux{id}', [Macth::class, 'suppression'])
+Route::get('/supprimer/jeux/team{id}', [Macth::class, 'suppression'])
     ->middleware(['auth', 'verified'])
     ->name('supprimeJeu');
 
-Route::get('/deletejeu{id}', [Macth::class, 'suppdefinitive'])
+Route::get('/modifier/jeux/{id}', function () {
+    return view('modifgameTeam');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('modifierJeu');
+
+
+Route::get('/deletejeu/team{id}', [Macth::class, 'suppdefinitive'])
     ->middleware(['auth', 'verified'])
     ->name('deletejeu');
 
-Route::get('/restaurejeu{id}', [Macth::class, 'restaurejeu'])
+Route::get('/restaurejeu/team{id}', [Macth::class, 'restaurejeu'])
     ->middleware(['auth', 'verified'])
     ->name('restaurejeu');
+
+Route::view('/jeu/importation', 'importationGame')
+    ->middleware(['auth', 'verified'])
+    ->name('importJeu');
+
+
 
 // Jeu perso 
 
@@ -114,9 +127,46 @@ Route::view('/parametre/jeu personnel', 'jeu_perso')
     ->middleware(['auth', 'verified'])
     ->name('jeuPerso');
 
-Route::get('/ajouter/jeu personnel', [JeuPerso::class, 'jeux'])
+Route::view('/ajouter/jeu personnel', '_jeuPerso')
     ->middleware(['auth', 'verified'])
     ->name('addjeuPerso');
+
+Route::view('/voir/jeu personnel', 'seen_jeuPerso')
+    ->middleware(['auth', 'verified'])
+    ->name('voirjeuPerso');
+
+Route::view('/jeu personnel/bloquer', 'gamePersoblock')
+    ->middleware(['auth', 'verified'])
+    ->name('bloqueJeuPerso');
+
+Route::get('/supprimer/jeu pesonnel{id}', [JeuPerso::class, 'suppressionPerso'])
+    ->middleware(['auth', 'verified'])
+    ->name('supprimeJeuP');
+
+Route::get('/restaurer/jeu pesonnel{id}', [JeuPerso::class, 'restaurerPerso'])
+    ->middleware(['auth', 'verified'])
+    ->name('restaurejeuP');
+
+Route::get('/deletejeu/jeu pesonnel{id}', [JeuPerso::class, 'suppdefinitiveP'])
+    ->middleware(['auth', 'verified'])
+    ->name('deletejeuP');
+
+Route::view('/modification/jeu personnel{id}', 'modifgamePerso')
+    ->middleware(['auth', 'verified'])
+    ->name('modifJeuP');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

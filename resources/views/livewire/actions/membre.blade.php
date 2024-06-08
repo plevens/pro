@@ -22,23 +22,23 @@ new class extends Component
         <a href="{{route('membre.sup')}}" class="btn btn-primary"><img src="{{asset('icons/person-plus.svg')}}" alt="" srcset=""></a>
 
         <table cellpadding="5%" class="table w-2" style="text-align:center">
-            <tr class="">
+            <tr class="tr">
                 <td>
 
                 </td>
-                <td>
+                <td id="td">
                     Pseudo
                 </td>
-                <td>
+                <td id="td">
                     Role
                 </td>
-                <td>
+                <td id="td">
                     date d'entrer
                 </td>
-                <td>
+                <td id="td">
                     date du demande
                 </td>
-                <td>
+                <td id="td">
                     Menu
                 </td>
             </tr>
@@ -153,8 +153,9 @@ new class extends Component
             @endforeach
             @endforeach
             @endif
-            @endforeach
+            
         </table>
+        @endforeach
         @php
         $i = 0;
         $id = 0;
@@ -176,23 +177,23 @@ new class extends Component
         @endforeach
         @if($i == 1)
         <table cellpadding="10%" class="table w-4" style="text-align:center">
-            <tr class="">
+            <tr class="tr">
                 <td>
 
                 </td>
-                <td>
+                <td id="td">
                     Pseudo
                 </td>
-                <td>
+                <td id="td">
                     Role
                 </td>
-                <td>
+                <td id="td">
                     date d'entrer
                 </td>
-                <td>
-                    date du demande
+                <td id="td">
+                    date du demandeS
                 </td>
-                <td>
+                <td id="td">
                     Menu
                 </td>
             </tr>

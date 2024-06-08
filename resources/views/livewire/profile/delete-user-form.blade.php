@@ -32,27 +32,27 @@ new class extends Component
         </h2>
 
         <p class="mt-1 text-sm text-gray-600"id="texte">
-            {{ __('Une fois votre compte supprimé, toutes ses ressources est ses données seront définitivement cette la supprimée. Avant votre compte,veiilller télécharge.') }}
+            {{ __('Une fois votre compte sera supprimé, toutes ses ressources et ses données seront définitivement supprimée. Avant de supprimer votre compte, veuiller télécharger des données ou des informations que souhaitez conserver.') }}
         </p>
     </header>
 
-    <x-danger-button x-data="" id="boutton_delete_account" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Delete Account') }}</x-danger-button>
+    <x-danger-button x-data="" id="boutton_delete_account" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Supprimer le compte') }}</x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
         <form wire:submit="deleteUser" class="p-6"id="form_delete_account">
 
             <h2 class="text-lg font-medium text-gray-900" id="delete_account">
-                {{ __('Are you sure you want to delete your account?') }}
+                {{ __('Etes-vous sûr de vouloir supprimer votre compte?') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600"id="texte">
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                {{ __('Une fois votre compte sera supprimé, toutes ses ressources et ses données seront supprimées de manière définitive. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez définir définitivement votre compte.') }}
             </p>
 
             <div class="mt-6">
                 <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" id="sr-only" />
 
-                <x-text-input wire:model="password" id="password" name="password" type="password" class="mt-1 block w-3/4" placeholder="{{ __('Password') }}" />
+                <x-text-input wire:model="password" id="password" name="password" type="password" class="mt-1 block w-3/4" placeholder="{{ __('Mot de passe') }}" />
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>

@@ -4,6 +4,7 @@ namespace App\Livewire\Match;
 
 use App\Livewire\Nav\Navigate;
 use App\Models\Game;
+use App\Models\Hobbies_perso;
 use App\Models\Hobbies_team;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
