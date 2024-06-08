@@ -40,7 +40,9 @@ new class extends Component
         <div style="position:fixed;background-color:white;color:white;height:100%">
             <a href="{{route('member.team')}}" wire:navigate><img src="{{asset('icons/people.svg')}}" alt="" srcset=""></a>
             <br>
-            <a><img src="{{asset('icons/controller.svg')}}" alt="" srcset=""></a>
+            <a href="{{route('seengameUser')}}" wire:navigate>
+                <img src="{{asset('icons/controller.svg')}}" alt="" srcset="">
+            </a>
             <br>
             <a href="{{route('avatar.pseudo')}}" wire:navigate><img src="{{asset('icons/person-badge.svg')}}" alt="" srcset=""></a>
             <br>

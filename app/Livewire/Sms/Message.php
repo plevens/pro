@@ -67,6 +67,10 @@ class Message extends Component
       }
     }
 
+    $this->validate([
+      'text' => 'required',
+    ]);
+
     Msg::create([
       'message' => $this->text,
       'team_id' => $this->id_team,

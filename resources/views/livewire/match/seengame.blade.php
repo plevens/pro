@@ -31,9 +31,8 @@ new class extends Component
             <td>{{$key->nom}}</td>
             <td>{{$key->description}}</td>
             @if(strlen($key->banniere) > 1)
-            <td><img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt="">
-            <td>
-                @endif
+            <td><img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt=""></td>
+            @endif
             <td>
                 <a href="{{route('supprimeJeu',['id'=>$key->id])}}" wire:navigate>
                     <x-danger-button>

@@ -18,6 +18,7 @@ new class extends Component
             <td>Nom</td>
             <td>Description</td>
             <td>Banniere</td>
+            <td></td>
         </tr>
         @foreach($game as $key)
         @if($key->auth_id == Auth::user()->id && $key->status == 'true')
@@ -31,9 +32,8 @@ new class extends Component
             <td>{{$key->description}}</td>
             @if(strlen($key->banniere) > 1)
             <td><img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt="">
-            <td>
-                @endif
-            <td>
+            </td>
+            @endif
             <td>
                 <form wire:submit="addGame">
                     <input wire:model="nom" type="hidden" name="" id="">

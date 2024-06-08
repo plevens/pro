@@ -119,6 +119,12 @@ Route::view('/jeu/importation', 'importationGame')
     ->middleware(['auth', 'verified'])
     ->name('importJeu');
 
+Route::view('/team/notre jeu', 'seengame_user')
+    ->middleware(['auth', 'verified'])
+    ->name('seengameUser');
+
+
+
 
 
 // Jeu perso 

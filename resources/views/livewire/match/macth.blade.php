@@ -18,58 +18,32 @@ new class extends Component
         @endif
         @if(session('stat') == '402')
         <b>Vous avez deja un jeu bloquer</b> <br>
-<<<<<<< HEAD
         @endif
         <br>
         <form wire:submit="startGame" enctype="multipart/form-data">
-            <input wire:model="nom" type="text" name="" id="" placeholder="Nom de votre jeu">
+            <input wire:model="nom" type="text" name="" id="input_nom_de_votre_jeu" placeholder="Nom de votre jeu">
             <x-input-error :messages="$errors->get('nom')" class="mt-2" />
             <br><br>
             <label for="icon">
                 inserez votre icon
             </label>
             <input wire:model="file" type="file" name="" id="icon" hidden>
-=======
-    @endif
-    <br>
-    <form wire:submit="startGame" enctype="multipart/form-data">
-        <input wire:model="nom" type="text" name="" id="input_nom_de_votre_jeu" placeholder="Nom de votre jeu">
-        <x-input-error :messages="$errors->get('nom')" class="mt-2" />
-        <br><br>
-        <label for="icon">
-            inserez votre icon
-        </label>
-        <input wire:model="file" type="file" name="" id="icon" hidden>
->>>>>>> d5f0490290eeb4ac4b6971e420dac0c0adda5f22
             @if($file)
-            <img src="{{$file->temporaryUrl() }}" alt="Icone" width="20cm">
-            @else
-            <b wire:loading="chargement"></b>
+            <img src="{{$file->temporaryUrl() }}" alt="Icone" width="50cm">
             @endif
-<<<<<<< HEAD
             <br><br>
             <label for="baniere">Votre banniere</label>
+            @if($banniere)
+            <img src="{{($banniere->temporaryUrl() )}}" style="height: 0.7cm; width: 2cm;" alt="">
+            @endif
             <input wire:model="banniere" type="file" name="" id="baniere" hidden>
             <br><br>
             <textarea wire:model="description" placeholder="Description du jeu" name="" id="" cols="20" rows="3"></textarea>
             <x-input-error :messages="$errors->get('description')" class="mt-2" />
             <br><br>
-            <button>
+            <button id="boutton_ajouter_votre_jeu">
                 Ajouter votre jeu
             </button>
         </form>
-=======
-        <br><br>
-        <label for="baniere">Votre banniere</label>
-        <input wire:model="banniere" type="file" name="" id="baniere" hidden>
-        <br><br>
-        <textarea wire:model="description" placeholder="Description du jeu" name="" id="" cols="20" rows="3"></textarea>
-        <x-input-error :messages="$errors->get('description')" class="mt-2" />
-        <br><br>
-        <button id="boutton_ajouter_votre_jeu">
-            Ajouter votre jeu
-        </button>
-    </form>
->>>>>>> d5f0490290eeb4ac4b6971e420dac0c0adda5f22
     </center>
 </div>

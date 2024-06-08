@@ -13,16 +13,17 @@ new class extends Component
 <div wire:poll.5s>
 
     @if($n == 1)
-
     @foreach($mess as $msg)
     @foreach($team as $teams)
     @if($teams->auth_id == Auth::user()->id && $msg->auth_id == Auth::user()->id && $teams->status == "true" && $msg->team_id == $teams->id)
+    {{$msg->created_at->diffForHumans()}} <br>
     vous : {{$msg->message}}
     <br>
     @else
     @if($teams->auth_id == Auth::user()->id && $msg->auth_id != Auth::user()->id && $teams->status == "true" && $msg->team_id == $teams->id)
     @foreach($user as $users)
     @if($msg->auth_id == $users->id)
+    {{$msg->created_at->diffForHumans()}} <br>
     {{$users->name}} :
     @endif
     @endforeach
@@ -36,16 +37,17 @@ new class extends Component
 
 
     @if($e == 1)
-
     @foreach($mess as $msg)
     @foreach($_team as $_teams)
     @if($_teams->user_id == Auth::user()->id && $msg->auth_id == Auth::user()->id && $_teams->activate == "true" && $msg->team_id == $_teams->team_id)
+    {{$msg->created_at->diffForHumans()}} <br>
     vous : {{$msg->message}}
     <br>
     @else
     @if($_teams->user_id == Auth::user()->id && $msg->auth_id != Auth::user()->id && $_teams->activate == "true" && $msg->team_id == $_teams->team_id)
     @foreach($user as $users)
     @if($msg->auth_id == $users->id)
+    {{$msg->created_at->diffForHumans()}} <br>
     {{$users->name}} :
     @endif
     @endforeach
@@ -57,7 +59,7 @@ new class extends Component
     @endforeach
     @endif
     <form wire:submit="texto">
-        <textarea wire:model="text" name="text" id="" cols="10" rows="1"></textarea>
+        <input type="text" name="" id="" wire:model="text" placeholder="Votre message">
         <x-input-error :messages="$errors->get('text')" class="mt-2" />
         <br>
         <button>
