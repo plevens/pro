@@ -82,9 +82,9 @@ new class extends Component
     }
 }; ?>
 
-<section >
+<section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900"id="profile_information">
+        <h2 class="text-lg font-medium text-gray-900" id="profile_information">
             {{ __('Profile Information') }}
         </h2>
 
@@ -101,11 +101,9 @@ new class extends Component
                     <img src="{{$avatar->temporaryUrl() }}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm">
                     @else
                     @if(strlen(Auth::user()->avatar) == 1)
-                    <h1 style="background-color:black;color:white;border-radius:50%;font-size:250%;width:2cm;height:2cm">
-                        {{Auth::user()->avatar}}
-                    </h1>
+                    <img src="{{asset('icons/person-circle.svg')}}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm" alt="" srcset="">
                     @else
-                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" width="100cm" style="border-radius: 50%;height:2.5cm" alt="">
+                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm" alt="" srcset="">
                     @endif
                     @endif
                 </label>
@@ -114,13 +112,13 @@ new class extends Component
 
         </div>
         <div>
-            <x-input-label for="name" :value="__('Name')" id="label_name"/>
+            <x-input-label for="name" :value="__('Name')" id="label_name" />
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')" id="label_email"/>
+            <x-input-label for="email" :value="__('Email')" id="label_email" />
             <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
