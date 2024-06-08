@@ -13,7 +13,7 @@ new class extends Component
 <div wire:poll.5s>
     <center>
         <h1 id="team">
-            Team
+            Groupe
         </h1>
     </center>
     <br>
@@ -35,11 +35,11 @@ new class extends Component
                 <td id="td">
                     Nom
                 </td>
-                <td>
+                <td id="td">
                     Creer le
                 </td>
                 <td id="td">
-                    status
+                    Statut
                 </td>
                 <td>
 
@@ -66,7 +66,7 @@ new class extends Component
                 </td>
                 <td>
                     <a href="{{route('supprime.game',['id'=>$games->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
-                        <x-danger-button>
+                        <x-danger-button id="Supprimer">
                             Supprimer
                         </x-danger-button>
                     </a>
@@ -101,7 +101,7 @@ new class extends Component
                 </td>
                 <td>
                     <a href="{{route('supprime.game',['id'=>$games->id])}}" class="bg-danger" onclick="if(confirm('Voulez-vous vraiment supprimer votre groupe ?')){}else return false;">
-                        <x-danger-button>
+                        <x-danger-button id="Supprimer">
                             Supprimer
                         </x-danger-button>
                     </a>

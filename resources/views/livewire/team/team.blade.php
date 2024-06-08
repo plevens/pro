@@ -13,13 +13,14 @@ new class extends Component
 
 <div>
     <center>
-        <h1 class="text-primary">
+        <h1 class="text-primary"id="creer_votre_groupe">
             Creer votre groupe
         </h1>
         <form wire:submit="addGame" enctype="multipart/form-data">
-            <input wire:model="nom" type="text" placeholder="Nom" name="" id="Ajouter_votre_groupe">
+            <input wire:model="nom" type="text" placeholder="Nom" name="" id="input-ajouter">
             <br>
-            <label for="tof" class="tof">Photo du groupe </label> <input hidden wire:model="file" type="file" name="" id="tof">
+            <br>
+            <label for="tof"id="photo_du_groupe" class="tof">Photo du groupe </label> <input hidden wire:model="file" type="file" name="" id="tof">
             <br>
             <b></b>
             @if($file)
@@ -27,8 +28,8 @@ new class extends Component
             @else
             <b wire:loading="chargement"></b>
             @endif
-            <br>
-            <input type="submit" value="Enregistrer">
+            
+            <input type="submit" value="Enregistrer"id="boutton-enregistrer">
         </form>
     </center>
 </div>

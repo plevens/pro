@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Gamestatut;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
@@ -30,7 +32,7 @@ new #[Layout('layouts.guest')] class extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
         if (empty($this->file)) {
-            $path = $this->file = 'icons/person-circle.svg';
+            $path = $this->name[0];
         } else {
             $this->validate([
                 'file' => 'image|max:2048|min:0',
@@ -38,6 +40,7 @@ new #[Layout('layouts.guest')] class extends Component
             $this->file->store('public');
             $path = $this->file->store();
         }
+
 
         $validated['password'] = Hash::make($validated['password']);
 
@@ -49,6 +52,16 @@ new #[Layout('layouts.guest')] class extends Component
         ])));
 
         Auth::login($user);
+        $member_team = Gamestatut::get();
+        $n = 0;
+        $_id = 0;
+        foreach ($member_team as $key) {
+            if ($key->email == Auth::user()->email) {
+                $n++;
+                $_id = Auth::user()->id;
+            }
+        }
+        DB::update('UPDATE `gamestatuts` SET `user_id` = "' . $_id . '" WHERE `email` ="' . Auth::user()->email . '"');
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
     }

@@ -12,61 +12,60 @@ new class extends Component
 
 <div>
     <center>
-
-        @foreach($game as $games)
-        @if($games->auth_id == Auth::user()->id)
-        <h2>Modifier le nom du groupe</h2>
+        @if($p == 1)
+        <h2 id="Modifier-le-nom-du-groupe">Modifier le nom du groupe</h2>
         <br>
-        <form action="{{route('update.name',['id'=>$games->id])}}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            @if(strlen($games->icon) == 1)
-            <label for="img">{{$games->icon}}</label>
+        <form wire:submit="updateName" enctype="multipart/form-data">
+            <label for="img" style="border-radius:50%">
+                @if($img)
+                <img src="{{$img->temporaryUrl() }}" alt="Icone" width="100cm">
+                @else
+                @if(strlen($icon) == 1)
+                {{$icon}}
+                @else
+
+                <img src="{{asset('storage/'.$icon)}}" width="100cm" alt="">
+                @endif
+                @endif
+            </label>
             <br>
-            @else
-            <label for="img"><img src="{{asset('storage/'.$games->icon)}}" width="50cm" alt=""></label>
-            @endif
-            <input type="file" name="file" id="img" hidden>
-            <input type="text" name="image" value="{{$games->icon}}" hidden>
-            <input type="text" name="name" value="{{$games->nom}}" id="">
-            <input type="hidden" name="id" value="{{$games->id}}" id="">
+            <input type="file" wire:model="img" name="file" id="img" hidden>
+            <input type="text" wire:model="nom" name="name" value="{{$nom}}" id="input-modifier">
+            <input type="hidden" name="id" wire:model="id" value="{{$id}}" id="">
+            <br>
+            <br>
+            <button id="boutton-modifier">Modifier</button>
+        </form>
+        @endif
+
+
+        @if($f == 1)
+        <h2>Modifier Votre profil</h2>
+        <br>
+        <form wire:submit="updateProfile" enctype="multipart/form-data">
+            Votre avatare
+            <label for="img" style="border-radius:50%">
+                @if($img)
+                <img src="{{$img->temporaryUrl() }}" alt="Icone" width="100cm">
+                @else
+                @if(strlen($icon) == 1)
+                {{$icon}}
+                @else
+
+                <img src="{{asset('storage/'.$icon)}}" width="100cm" alt="">
+                @endif
+                @endif
+            </label>
+            <br>
+            <input type="file" wire:model="img" name="file" id="img" hidden>
+            <input type="text" wire:model="nom" name="name" value="{{$nom}}" id="">
+            <input type="hidden" name="id" wire:model="id" value="{{$id}}" id="">
             <br>
             <br>
             <button id="mod">Modifier</button>
         </form>
-        @endif
-        @endforeach
-
-        @foreach($_game as $_games)
-        @if($_games->user_id == Auth::user()->id)
-        <h2>Modifier Votre profil</h2>
-        <br>
-        <form action="{{route('update.utilisateur',['id'=>$_games->id])}}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            Votre avatare
-            <br>
-            @if(strlen($_games->avatar) == 1)
-            <label for="img" style="background-color:cadetblue;padding:10px 15px ;border-radius:3em">{{$_games->avatar}}</label>
-            <br>
-            <br>
-            @else
-            <label for="img"><img src="{{asset('storage/'.$_games->avatar)}}" style="border-radius:4em" width="50cm" height="50cm" alt=""></label>
-            @endif
-            <br>
-            <input type="file" name="file" id="img" hidden>
-            <label for="pseudo">Pseudo</label>
-            <br>
-            <input type="text" name="image" value="{{$_games->avatar}}" hidden>
-            <input type="text" name="pseudo" value="{{$_games->pseudo}}" id="pseudo">
-            <input type="hidden" name="id" value="{{$_games->id}}" id="">
-            <br>
-            <br>
-            <x-primary-button>Modifier</x-primary-button>
-        </form>
 
         @endif
-        @endforeach
 
 
     </center>
