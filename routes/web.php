@@ -212,6 +212,10 @@ Route::get('/delete/member/{id}', [DeleteGame::class, 'suppressions'])
     ->middleware(['auth', 'verified'])
     ->name('delete.member');
 
+Route::get('/deletes/member/{id}', [DeleteGame::class, 'supprim'])
+    ->middleware(['auth', 'verified'])
+    ->name('deletes.member');
+
 // supplementaire 
 
 Route::view('/ajouter/membre', 'membre_sup')

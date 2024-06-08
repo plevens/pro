@@ -61,6 +61,25 @@ class DeleteGame extends Component
         session()->flash('msg', $ids);
         return redirect('/team');
     }
+
+    public function supprim(Gamestatut $id)
+    {
+        $auth_id = Auth::user()->id;
+        $id->delete();
+        $team = Game::get();
+        $nbr = 0;
+        $ids = 0;
+        foreach ($team as $key) {
+            if ($key->id == $id->team_id) {
+                $nbr = $key->membre;
+                $ids = $key->id;
+            }
+        }
+        DB::delete('DELETE FROM `msgs` WHERE `auth_id` = "' . $auth_id . '" AND `team_id` = "' . $id->team_id . '"  ');
+        session()->flash('msg', $ids);
+        return back();
+    }
+
     public function suppressions(Gamestatut $id)
     {
         $id->delete();
