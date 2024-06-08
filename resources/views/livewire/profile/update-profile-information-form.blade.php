@@ -82,7 +82,7 @@ new class extends Component
     }
 }; ?>
 
-<section >
+<section>
     <header>
         <h2 class="text-lg font-medium text-gray-900"id="profile_information">
             {{ __('Information sur le profil') }}
@@ -101,11 +101,9 @@ new class extends Component
                     <img src="{{$avatar->temporaryUrl() }}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm">
                     @else
                     @if(strlen(Auth::user()->avatar) == 1)
-                    <h1 style="background-color:black;color:white;border-radius:50%;font-size:250%;width:2cm;height:2cm">
-                        {{Auth::user()->avatar}}
-                    </h1>
+                    <img src="{{asset('icons/person-circle.svg')}}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm" alt="" srcset="">
                     @else
-                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" width="100cm" style="border-radius: 50%;height:2.5cm" alt="">
+                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" style="border-radius: 50%;height:2.5cm" alt="Icone" width="100cm" alt="" srcset="">
                     @endif
                     @endif
                 </label>

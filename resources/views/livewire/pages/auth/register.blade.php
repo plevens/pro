@@ -32,7 +32,7 @@ new #[Layout('layouts.guest')] class extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
         if (empty($this->file)) {
-            $path = $this->file = 'icons/person-circle.svg';
+            $path = $this->name[0];
         } else {
             $this->validate([
                 'file' => 'image|max:2048|min:0',
