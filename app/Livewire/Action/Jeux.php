@@ -26,8 +26,11 @@ class Jeux extends Component
         $this->n  = 0;
         $this->jeux = Hobbies_perso::get();
         $this->validate([
-            'nom' => 'required|string|max:255'
+            'nom' => 'required|string|max:255',
+            'file' => 'image|max:2048',
+            'banniere' => 'image|max:2048',
         ]);
+
         foreach ($this->jeux as $key) {
             if (strtolower($key->nom) ==  strtolower($this->nom) && $key->auth_id == Auth::user()->id) {
                 $this->n++;
@@ -36,24 +39,16 @@ class Jeux extends Component
         if ($this->n == 1) {
             session()->flash('msg', 'here');
         } else {
-            if (empty($this->file)) {
-                $path = $this->nom[0];
-            } else {
-                $this->file->store('public');
-                $path = $this->file->store();
-            }
+            $this->banniere->store('public');
+            $paths = $this->banniere->store();
+            $this->file->store('public');
+            $path = $this->file->store();
             if (empty($this->description)) {
                 $desc = 'Jolie jeux';
             } else {
                 $desc = $this->description;
             }
-            if (empty($this->banniere)) {
-                $paths = $this->nom[0];
-            } else {
-                $this->banniere->store('public');
-                $paths = $this->banniere->store();
-            }
-            DB::update('UPDATE `Hobbies_persos` SET `status` ="false" WHERE `auth_id` = "' . Auth::user()->id . '"');
+            DB::update('UPDATE `Hobbies_persos` SET `status` ="false" WHERE `auth_id` = "' . Auth::user()->id . '" AND `status` ="true" OR `auth_id` = "' . Auth::user()->id . '" AND `status` ="false"');
             Hobbies_perso::create([
                 'auth_id' => Auth::user()->id,
                 'nom' => $this->nom,

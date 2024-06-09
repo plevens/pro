@@ -29,6 +29,7 @@ new class extends Component
                 </div>
 
                 <!-- Navigation Links -->
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
@@ -46,14 +47,15 @@ new class extends Component
                     </x-nav-link>
 
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
-                </div>
 
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+                <livewire:nav.jeu />
+
                 <livewire:nav.navigate />
                 &nbsp;
                 &nbsp;
@@ -112,7 +114,7 @@ new class extends Component
                     @livewire('notification.pop-notif')
                 </sup>
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('jeuPerso')" :active="request()->routeIs('jeuPerso')" wire:navigate>
+            <x-responsive-nav-link :href="route('jeu')" :active="request()->routeIs('jeu')" wire:navigate>
                 <input type="image" src="{{asset('icons/controller.svg')}}" style="width:0.5cm" alt="">
             </x-responsive-nav-link>
             <livewire:nav.navigate />

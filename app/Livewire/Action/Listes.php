@@ -43,6 +43,14 @@ class Listes extends Component
         session()->flash('msg', $id->nom);
         return back();
     }
+    public function restaure(Hobbies_perso $id)
+    {
+        $id->update([
+            'status' => 'false'
+        ]);
+        session()->flash('msg', $id->nom);
+        return back();
+    }
     public function modifJeux(Hobbies_perso $id)
     {
         $nom = $id->nom;

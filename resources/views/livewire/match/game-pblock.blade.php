@@ -20,29 +20,27 @@ new class extends Component
             <td>Menu</td>
         </tr>
         @foreach($game as $key)
-        @if($key->auth_id == Auth::user()->id && $key->status == 'false')
+        @if($key->auth_id == Auth::user()->id && $key->status == 'bloc')
         <tr>
-            @if(strlen($key->icon) > 1)
-            <td><img src="{{asset('storage/'.$key->icon)}}" width="50cm" height="50cm" style="border-radius:4em" alt=""></td>
-            @else
-            <td>{{$key->icon}}</td>
-            @endif
+            <td>
+                @if(strlen($key->icon) > 1)
+                <img src="{{asset('storage/'.$key->icon)}}" width="50cm" height="50cm" style="border-radius:4em" alt="">
+                @else
+                {{$key->icon}}
+                @endif
+            </td>
             <td>{{$key->nom}}</td>
             <td>{{$key->description}}</td>
-            @if(strlen($key->banniere) > 1)
-            <td><img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt="">
-            </td>
-            @endif
             <td>
-                <a href="{{route('restaurejeuP',['id'=>$key->id])}}" wire:navigate>
-                    <x-danger-button id="button-ajouter">
-                        Restaurer
-                    </x-danger-button>
-                </a>
-                <a href="{{route('deletejeuP',['id'=>$key->id])}}" wire:navigate>
-                    <x-danger-button>
-                        Supprimer
-                    </x-danger-button>
+                @if(strlen($key->banniere) > 1)
+                <img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt="">
+                @endif
+            </td>
+            <td>
+                <a href="{{route('update.game',['id'=>$key->id])}}" class="btn btn-danger" wire:navigate>
+
+                    Restaurer
+
                 </a>
             </td>
         </tr>

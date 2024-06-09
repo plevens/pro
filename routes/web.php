@@ -104,6 +104,9 @@ Route::get('/modification/jeux/{id}', [Listes::class, 'modifJeux'])
 Route::put('/updated/{id}', [Listes::class, 'updated'])
     ->middleware(['auth', 'verified'])
     ->name('updated.jeux');
+Route::get('/restaure/jeux/{id}', [Listes::class, 'restaure'])
+    ->middleware(['auth', 'verified'])
+    ->name('update.game');
 
 Route::view('/seen/game/team', 'seengame')
     ->middleware(['auth', 'verified'])

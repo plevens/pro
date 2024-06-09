@@ -18,7 +18,7 @@ new class extends Component
     {{$jeu->nom}}
     <br>
     @endif
-    @if($jeu->status == 'false')
+    @if($jeu->status == 'false' && $jeu->auth_id == Auth::user()->id)
     <br>
     <b>Jeux non actif</b>
     <a href="{{route('update.jeux',['id'=>$jeu->id])}}" wire:navigate>{{$jeu->nom}}</a>
