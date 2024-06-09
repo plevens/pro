@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Project!!') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('style/style.css')}}">
@@ -15,7 +15,8 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{asset('boot/app.css')}}">
+    <script src="{{asset('boot/app.js')}}"></script>
     <script src="{{asset('boot/jquery.js')}}"></script>
 </head>
 
