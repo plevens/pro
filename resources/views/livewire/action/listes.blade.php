@@ -14,7 +14,7 @@ new class extends Component
 <div>
 
     @foreach($jeux as $jeu)
-    @if($jeu->status == 'true' && $jeu->auth_id == Auth::user()->id)
+    @if($jeu->status == 'true')
     {{$jeu->nom}}
     <br>
     @endif
