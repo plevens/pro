@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Action\Jeux;
+use App\Livewire\Action\Listes;
 use App\Livewire\Friend\Friend;
 use App\Livewire\Match\JeuPerso;
 use App\Livewire\Nav\Navigate;
@@ -83,10 +85,25 @@ Route::view('/team', 'listeTeam')
     ->middleware(['auth', 'verified'])
     ->name('team');
 
-// Jeux team root 
+//  team root 
 Route::view('/team/game', 'jeux')
     ->middleware(['auth', 'verified'])
     ->name('gameTeam');
+// Activation d'un jeux 
+Route::get('/Change/jeux/{id}', [Listes::class, 'activeJeux'])
+    ->middleware(['auth', 'verified'])
+    ->name('update.jeux');
+// Bloquer un jeux 
+Route::get('/bloquer/jeux/{id}', [Listes::class, 'bloqueJeux'])
+    ->middleware(['auth', 'verified'])
+    ->name('bloque.jeux');
+// Modification du jeux non choisi 
+Route::get('/modification/jeux/{id}', [Listes::class, 'modifJeux'])
+    ->middleware(['auth'], 'verified')
+    ->name('moification.jeux');
+Route::put('/updated/{id}', [Listes::class, 'updated'])
+    ->middleware(['auth', 'verified'])
+    ->name('updated.jeux');
 
 Route::view('/seen/game/team', 'seengame')
     ->middleware(['auth', 'verified'])
@@ -96,18 +113,18 @@ Route::view('/jeu/bloquer/team', 'jeubloquer')
     ->middleware(['auth', 'verified'])
     ->name('blockjeu');
 
-Route::get('/supprimer/jeux/team{id}', [Macth::class, 'suppression'])
+Route::get('/supprimer/team/{id}', [Macth::class, 'suppression'])
     ->middleware(['auth', 'verified'])
     ->name('supprimeJeu');
 
-Route::get('/modifier/jeux/{id}', function () {
+Route::get('/modifier/{id}', function () {
     return view('modifgameTeam');
 })
     ->middleware(['auth', 'verified'])
     ->name('modifierJeu');
 
 
-Route::get('/deletejeu/team{id}', [Macth::class, 'suppdefinitive'])
+Route::get('/deletejeu/team/{id}', [Macth::class, 'suppdefinitive'])
     ->middleware(['auth', 'verified'])
     ->name('deletejeu');
 
@@ -145,7 +162,25 @@ Route::view('/jeu personnel/bloquer', 'gamePersoblock')
     ->middleware(['auth', 'verified'])
     ->name('bloqueJeuPerso');
 
-Route::get('/supprimer/jeu pesonnel{id}', [JeuPerso::class, 'suppressionPerso'])
+//menu   jeux
+
+Route::view('jeu', 'jeu')
+    ->middleware(['auth', 'verified'])
+    ->name('jeu');
+
+// ajouter un jeux  
+
+Route::view('/ajouter/jeu', 'jeuAdd')
+    ->middleware(['auth', 'verified'])
+    ->name('addjeu');
+
+// voir les jeux 
+
+Route::view('jeux/list', 'listes')
+    ->middleware(['auth', 'verified'])
+    ->name('voirjeu');
+
+Route::get('/supprimer/jeu pesonnel/{id}', [JeuPerso::class, 'suppressionPerso'])
     ->middleware(['auth', 'verified'])
     ->name('supprimeJeuP');
 

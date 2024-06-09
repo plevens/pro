@@ -41,7 +41,7 @@ new class extends Component
                             @livewire('notification.pop-notif')
                         </sup>
                     </x-nav-link>
-                    <x-nav-link :href="route('jeuPerso')" :active="request()->routeIs('jeuPerso')" wire:navigate>
+                    <x-nav-link :href="route('jeu')" :active="request()->routeIs('jeu')" wire:navigate>
                         <input type="image" src="{{asset('icons/controller.svg')}}" style="width:1cm" alt="">
                     </x-nav-link>
 

@@ -30,20 +30,12 @@ new class extends Component
             @endif
             <td>{{$key->nom}}</td>
             <td>{{$key->description}}</td>
-            @if(strlen($key->banniere) > 1)
-            <td><img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt=""></td>
-            @endif
             <td>
-                <a href="{{route('supprimeJeu',['id'=>$key->id])}}" wire:navigate>
-                    <x-danger-button>
-                        Bloquer
-                    </x-danger-button>
-                </a>
-                <a href="{{route('modifierJeu',['id'=>$key->id])}}" wire:navigate>
-                    <x-danger-button>
-                        Modifier
-                    </x-danger-button>
-                </a>
+                @if(strlen($key->banniere) > 1)
+                <img src="{{asset('storage/'.$key->banniere)}}" style="height: 0.7cm; width: 2cm;" alt="">
+                @endif
+            </td>
+            <td>
                 <a href="{{route('deletejeu',['id'=>$key->id])}}" wire:navigate>
                     <x-danger-button>
                         Supprimer

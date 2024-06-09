@@ -1,6 +1,8 @@
 <?php
 
 use App\Livewire\Actions\Logout;
+use App\Models\Game;
+use App\Models\Gamestatut;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Volt\Component;
@@ -17,6 +19,25 @@ new class extends Component
         $this->validate([
             'password' => ['required', 'string', 'current_password'],
         ]);
+        $team = Gamestatut::get();
+        $teams = Game::get();
+        $n = 0;
+        $p = 0;
+        foreach ($team as $key) {
+            if ($key->user_id == Auth::user()->id) {
+                $team_id = $key->team_id;
+                $p++;
+            }
+        }
+        if ($p >= 1) {
+            foreach ($teams as $keys) {
+                if ($keys->id == $team_id) {
+                    $nbr = $keys->membre;
+                    $n++;
+                }
+            }
+            DB::update('UPDATE `games` SET `membre` ="' . ($nbr - 1) . '" WHERE `id` ="' . $team_id . '"');
+        }
         DB::delete('DELETE FROM `games` WHERE `auth_id` = "' . Auth::user()->id . '"');
         DB::delete('DELETE FROM `gamestatuts` WHERE `auth_id` = "' . Auth::user()->id . '" OR `user_id` = "' . Auth::user()->id . '"');
         tap(Auth::user(), $logout(...))->delete();
@@ -27,11 +48,11 @@ new class extends Component
 
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900"id="delete_account">
+        <h2 class="text-lg font-medium text-gray-900" id="delete_account">
             {{ __('Supprimer le compte') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600"id="texte">
+        <p class="mt-1 text-sm text-gray-600" id="texte">
             {{ __('Une fois votre compte sera supprimé, toutes ses ressources et ses données seront définitivement supprimée. Avant de supprimer votre compte, veuiller télécharger des données ou des informations que souhaitez conserver.') }}
         </p>
     </header>
@@ -39,13 +60,13 @@ new class extends Component
     <x-danger-button x-data="" id="boutton_delete_account" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Supprimer le compte') }}</x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
-        <form wire:submit="deleteUser" class="p-6"id="form_delete_account">
+        <form wire:submit="deleteUser" class="p-6" id="form_delete_account">
 
             <h2 class="text-lg font-medium text-gray-900" id="delete_account">
                 {{ __('Etes-vous sûr de vouloir supprimer votre compte?') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600"id="texte">
+            <p class="mt-1 text-sm text-gray-600" id="texte">
                 {{ __('Une fois votre compte sera supprimé, toutes ses ressources et ses données seront supprimées de manière définitive. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez définir définitivement votre compte.') }}
             </p>
 

@@ -72,7 +72,7 @@ new class extends Component
                     en attente...
                 </td>
                 <td>
-                    {{$formats}}
+                    {{$_membre->created_at->diffForHumans()}}
                 </td>
                 <td>
                     <b style="display:inline-block">
@@ -153,7 +153,7 @@ new class extends Component
             @endforeach
             @endforeach
             @endif
-            
+
         </table>
         @endforeach
         @php
@@ -227,7 +227,7 @@ new class extends Component
                     {{$members->updated_at->diffForHumans()}}
                 </td>
                 <td>
-                    {{$formats}}
+                    {{$members->updated_at->diffForHumans()}}
                 </td>
                 @if($members->user_id == Auth::user()->id)
                 <td>

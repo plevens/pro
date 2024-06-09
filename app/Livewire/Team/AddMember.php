@@ -2,10 +2,13 @@
 
 namespace App\Livewire\Team;
 
+use App\Livewire\Mail\Mail as MailMail;
+use App\Mail\Invitation;
 use App\Models\Game;
 use App\Models\Gamestatut;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class AddMember extends Component
@@ -21,6 +24,7 @@ class AddMember extends Component
     public $i;
     public $id;
     public $nbr;
+    public $team_name;
     public function addMember(): void
     {
         $email = User::get();
@@ -65,6 +69,7 @@ class AddMember extends Component
                     session()->flash('msg', '201');
                 }
                 if ($this->n == 0) {
+                    Mail::to($this->email)->send(new Invitation($this->team_name));
                     Gamestatut::create([
                         'auth_id' => Auth::user()->id,
                         'email' => $this->email,

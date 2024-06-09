@@ -56,7 +56,7 @@ class JeuPerso extends Component
             'status' => 'true',
         ]);
         session()->flash('stat', '200');
-        $this->redirect('/ajouter/jeu personnel', navigate: true);
+        $this->redirect('/ajouter/jeu personnel/', navigate: true);
     }
 
     public function suppressionPerso(Hobbies_perso $id)

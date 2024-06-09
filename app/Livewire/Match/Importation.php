@@ -19,24 +19,28 @@ class Importation extends Component
     public $team;
     public $teams;
     public $id;
+    public $ids;
     public $jeux;
-    public function render()
-    {
-        $game = Hobbies_perso::get();
-        return view('livewire.match.importation', compact('game'));
-    }
-
-    public function addGame(): void
+    public $game;
+    public $i;
+    public $n;
+    public $e;
+    public $f;
+    public $t;
+    public function mount()
     {
         $this->n = 0;
         $this->i = 0;
+        $this->e = 0;
+        $this->f = 0;
+        $this->t = 0;
         $this->jeux = Hobbies_team::get();
         $this->game = Hobbies_perso::get();
         $this->team = Game::get();
         $this->teams = Game::get();
-
         foreach ($this->game as $key) {
-            if ($key->auth_id == Auth::user()->id) {
+            if ($key->auth_id == Auth::user()->id && $key->status == 'true') {
+                $this->n++;
                 $this->nom = $key->nom;
                 $this->icon = $key->icon;
                 $this->banniere = $key->banniere;
@@ -45,30 +49,40 @@ class Importation extends Component
         }
 
         foreach ($this->team as $keys) {
-            if ($keys->auth_id == Auth::user()->id) {
-                $this->team = $keys->id;
+            if ($keys->auth_id == Auth::user()->id && $keys->status == 'true') {
+
+                $this->id = $keys->id;
+            }
+        }
+        foreach ($this->jeux as $_key) {
+            if ($_key->auth_id == Auth::user()->id && $this->id == $_key->team_id && $_key->nom == $this->nom) {
+                $this->t++;
+                $this->ids = $_key->team_id;
+            } elseif ($_key->auth_id == Auth::user()->id && $this->id == $_key->team_id && $_key->nom != $this->nom) {
+                $this->i++;
+            }
+        }
+    }
+    public function render()
+    {
+        return view('livewire.match.importation');
+    }
+
+    public function addGame(): void
+    {
+
+
+        foreach ($this->jeux as $_key) {
+            if ($_key->auth_id == Auth::user()->id && $_key->team_id == $this->id) {
+                $this->e++;
             }
         }
 
-        foreach ($this->teams as $key) {
-            foreach ($this->jeux as $jeu) {
-                if ($jeu->auth_id == Auth::user()->id && $jeu->team_id == $key->id && $jeu->status == 'true' && $key->status == 'true') {
-                    $this->n++;
-                }
-            }
-        }
 
-        foreach ($this->teams as $key) {
-            foreach ($this->jeux as $jeu) {
-                if ($jeu->auth_id == Auth::user()->id && $jeu->team_id == $key->id && $jeu->status == 'false' && $key->status == 'true') {
-                    $this->i++;
-                }
-            }
-        }
 
-        if ($this->i == 0 && $this->n == 0) {
+        if ($this->e <= 0) {
             Hobbies_team::create([
-                'team_id' => $this->team,
+                'team_id' => $this->id,
                 'auth_id' => Auth::user()->id,
                 'nom' => $this->nom,
                 'icon' => $this->icon,
@@ -78,10 +92,7 @@ class Importation extends Component
             ]);
             session()->flash('stat', '200');
             $this->redirect('/team/game', navigate: true);
-        } elseif ($this->n >= 1) {
-            session()->flash('stat', '401');
-            $this->redirect('/team/game', navigate: true);
-        } elseif ($this->i >= 1) {
+        } else {
             session()->flash('stat', '402');
             $this->redirect('/team/game', navigate: true);
         }
